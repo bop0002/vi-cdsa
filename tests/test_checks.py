@@ -43,3 +43,10 @@ def test_detects_small_class_and_auto_title():
     errs = run_checks(f, min_test=3, min_train=5)
     assert any("B_test: class" in e for e in errs)
     assert any("auto-title" in e for e in errs)
+
+
+def test_user_review_starting_with_title_phrase_is_not_flagged():
+    f = valid_frames()
+    f["B_test"].loc[0, "text_clean"] = "hài lòng, sách đẹp"
+    errs = run_checks(f, min_test=3, min_train=5)
+    assert not any("auto-title" in e for e in errs)

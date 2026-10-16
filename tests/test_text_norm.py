@@ -50,3 +50,14 @@ def test_clean_text_full_pipeline():
 def test_normalize_is_idempotent_on_res1_style():
     s = "mình rất thích nước dùng ở đây, món trộn ăn không hợp lắm, quán sạch sẽ"
     assert normalize_format(s) == s
+
+
+def test_strip_platform_text_handles_nfd_input():
+    import unicodedata
+    raw = unicodedata.normalize("NFD", "Hài lòng. Sách đẹp")
+    out = strip_platform_text(raw).strip()
+    assert unicodedata.normalize("NFC", out) == "Sách đẹp"
+
+
+def test_normalize_format_folds_math_alphanumerics():
+    assert normalize_format("𝐇𝐚𝐲 lắm") == "hay lắm"

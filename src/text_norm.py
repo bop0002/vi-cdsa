@@ -34,12 +34,13 @@ KG_AS_NEGATION = re.compile(r"(?<!\d)(?<!\d )\bkg\b")
 
 
 def strip_platform_text(t: str) -> str:
+    t = unicodedata.normalize("NFKC", t)
     t = NO_SCORE.sub(" ", t)
     return AUTO_TITLE.sub("", t, count=1)
 
 
 def normalize_format(t: str) -> str:
-    t = unicodedata.normalize("NFC", t).lower()
+    t = unicodedata.normalize("NFKC", t).lower()
     t = URL.sub(" ", t)
     t = emoji.replace_emoji(t, " ")
     t = SENT_PUNCT.sub(", ", t)

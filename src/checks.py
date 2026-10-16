@@ -4,7 +4,7 @@ import pandas as pd
 
 from src.config import MIN_WORDS
 
-LEFTOVER_TITLE = re.compile(r"^(rất không hài lòng|không hài lòng|cực k[ìỳ] hài lòng|hài lòng|bình thường)(,|$)")
+LEFTOVER_TITLE = re.compile(r"^(rất không hài lòng|không hài lòng|cực k[ìỳ] hài lòng|hài lòng|bình thường)$")
 SPLITS = ("train", "val", "test")
 
 
