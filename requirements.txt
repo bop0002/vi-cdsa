@@ -1,0 +1,6 @@
+pandas>=2.0
+pyarrow
+scikit-learn
+emoji
+py_vncorenlp
+pytest
