@@ -1,6 +1,7 @@
 """Build Domain A (Tiki book) and Domain B (res1). Run: python -m src.build_dataset"""
 import json
 import sys
+from pathlib import Path
 
 import pandas as pd
 
@@ -19,6 +20,16 @@ def dist(df: pd.DataFrame) -> dict:
 def describe(df: pd.DataFrame) -> dict:
     return {"n": len(df), "labels": dist(df),
             "words": df["n_words"].describe()[["mean", "50%", "min", "max"]].round(1).to_dict()}
+
+
+def write_audit_if_missing(df: pd.DataFrame, path: Path) -> bool:
+    """Write the label-audit CSV only if absent (the user annotates it by hand)."""
+    path = Path(path)
+    if path.exists():
+        print(f"audit exists, not overwritten: {path}")
+        return False
+    df.to_csv(path, index=False, encoding="utf-8-sig")
+    return True
 
 
 def main() -> int:
@@ -55,13 +66,17 @@ def main() -> int:
     errors = run_checks(frames)
     PROCESSED.mkdir(parents=True, exist_ok=True)
     for name, df in frames.items():
-        df[OUTPUT_COLUMNS].to_parquet(PROCESSED / f"{name}.parquet", index=False)
         log["splits"][name] = describe(df)
-    for d in "AB":
-        audit = pd.concat([frames[f"{d}_train"], frames[f"{d}_val"], frames[f"{d}_test"]])
-        (audit.groupby("label", group_keys=False).sample(n=100, random_state=SEED)
-              [["id", "label", "text_raw", "text_clean"]].assign(correct="")
-              .to_csv(PROCESSED / f"label_audit_{d}.csv", index=False, encoding="utf-8-sig"))
+    if not errors:
+        for name, df in frames.items():
+            df[OUTPUT_COLUMNS].to_parquet(PROCESSED / f"{name}.parquet", index=False)
+        for d in "AB":
+            audit = pd.concat([frames[f"{d}_train"], frames[f"{d}_val"], frames[f"{d}_test"]])
+            sample = (audit.groupby("label", group_keys=False).sample(n=100, random_state=SEED)
+                      [["id", "label", "text_raw", "text_clean"]].assign(correct=""))
+            write_audit_if_missing(sample, PROCESSED / f"label_audit_{d}.csv")
+    else:
+        print("checks failed: parquet and audit files NOT written")
     log["errors"] = errors
     (PROCESSED / "stats.json").write_text(json.dumps(log, ensure_ascii=False, indent=2), encoding="utf-8")
 

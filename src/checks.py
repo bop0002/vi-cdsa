@@ -32,6 +32,9 @@ def run_checks(frames: dict, min_test: int = 300, min_train: int = 1000) -> list
             errs.append(f"{d}_test: class < {min_test}")
         if _min_class(frames[f"{d}_train"]) < min_train:
             errs.append(f"{d}_train: class < {min_train}")
+        allf = pd.concat([frames[f"{d}_{s}"] for s in SPLITS])
+        if len(allf) and allf["group_id"].value_counts(normalize=True).iloc[0] > 0.02:
+            errs.append(f"{d}: group_id share > 2%")
     ka = set().union(*(frames[f"A_{s}"]["key"] for s in SPLITS))
     kb = set().union(*(frames[f"B_{s}"]["key"] for s in SPLITS))
     if ka & kb:

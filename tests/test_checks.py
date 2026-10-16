@@ -3,7 +3,8 @@ from src.checks import run_checks
 
 
 def make(prefix, n_per_class):
-    rows = [{"key": f"{prefix} {c} {i}", "text_clean": f"{prefix} câu số {c} {i}", "label": c, "n_words": 4}
+    rows = [{"key": f"{prefix} {c} {i}", "text_clean": f"{prefix} câu số {c} {i}", "label": c, "n_words": 4,
+             "group_id": f"{prefix}-{c}-{i}"}
             for c in (0, 1, 2) for i in range(n_per_class)]
     return pd.DataFrame(rows)
 
@@ -11,7 +12,7 @@ def make(prefix, n_per_class):
 def valid_frames():
     f = {}
     for d in "AB":
-        f[f"{d}_train"] = make(f"{d}tr", 5)
+        f[f"{d}_train"] = make(f"{d}tr", 20)
         f[f"{d}_val"] = make(f"{d}va", 2)
         f[f"{d}_test"] = make(f"{d}te", 2)
         f[f"{d}_test_balanced"] = f[f"{d}_test"]
@@ -50,3 +51,10 @@ def test_user_review_starting_with_title_phrase_is_not_flagged():
     f["B_test"].loc[0, "text_clean"] = "hài lòng, sách đẹp"
     errs = run_checks(f, min_test=3, min_train=5)
     assert not any("auto-title" in e for e in errs)
+
+
+def test_detects_dominant_group_id():
+    f = valid_frames()
+    f["A_train"] = f["A_train"].assign(group_id="same")
+    errs = run_checks(f, min_test=2, min_train=5)
+    assert any("A: group_id share > 2%" in e for e in errs)

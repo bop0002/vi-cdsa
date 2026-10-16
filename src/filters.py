@@ -31,9 +31,9 @@ def dedup_with_conflicts(df: pd.DataFrame, priority_col: str | None = None,
     n_labels = df.groupby("key")["label"].transform("nunique")
     df = df[n_labels == 1]
     if priority_col:
-        df = df.assign(_p=df[priority_col].map(priority)).sort_values(["_p", "id"]).drop(columns="_p")
+        df = df.assign(_p=df[priority_col].map(priority)).sort_values(["_p", "id"], kind="stable").drop(columns="_p")
     else:
-        df = df.sort_values("id")
+        df = df.sort_values("id", kind="stable")
     return df.drop_duplicates("key").reset_index(drop=True)
 
 
