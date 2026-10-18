@@ -1,0 +1,200 @@
+{"id": "res1_15015", "label": 1, "note": "Cảm xúc trung bình, khen cũng được và nêu giá cả."}
+{"id": "res1_15020", "label": 1, "note": "Đánh giá mức độ trung bình, bình thường."}
+{"id": "res1_15022", "label": 1, "note": "Chỉ hỏi thông tin giao hàng, không đánh giá."}
+{"id": "res1_15023", "label": 1, "note": "Cảm xúc trung bình, đánh giá quán ăn cũng tạm."}
+{"id": "res1_1503", "label": 0, "note": "(khó) Thất vọng về món ăn và dịch vụ, chắc không quay lại."}
+{"id": "res1_15032", "label": 2, "note": "(khó) Khen đồ ăn ngon và rẻ, có góp ý về phục vụ và nước lẩu."}
+{"id": "res1_15035", "label": 2, "note": "Khen món ăn ngon rẻ, chỉ chê nhẹ quán hơi bừa bộn."}
+{"id": "res1_15039", "label": 2, "note": "Hài lòng về nước lẩu và giá cả, chê nhẹ không gian nóng."}
+{"id": "res1_15041", "label": 2, "note": "Khen đồ ăn tươi ngon lên món nhanh, chê nhẹ nước dùng hơi ngọt."}
+{"id": "res1_15044", "label": 2, "note": "Rất thích lẩu và phục vụ, điểm trừ nhỏ là chờ bàn."}
+{"id": "res1_15046", "label": 2, "note": "Khen nước lẩu ngon, topping nhiều, nhân viên nhiệt tình."}
+{"id": "res1_15048", "label": 2, "note": "Khen phục vụ nhanh nhẹn, lẩu ngon rẻ, khuyên nên thử."}
+{"id": "res1_15049", "label": 1, "note": "(khó) Khen đồ nướng ngon nhưng chê lẩu thịt không tươi và mau ngán."}
+{"id": "res1_15051", "label": 1, "note": "(khó) Khen topping và đồ nướng ngon, chê nước lẩu và không gian nóng."}
+{"id": "res1_15052", "label": 2, "note": "Hài lòng phục vụ và giá cả, sẽ quay lại dù góp ý nêm nếm."}
+{"id": "res1_15056", "label": 1, "note": "Khen lẩu ngon nhưng phàn nàn đồ ăn ít và quán rất nóng."}
+{"id": "res1_15057", "label": 1, "note": "Đánh giá đồ ăn ở mức bình thường, giá rẻ."}
+{"id": "res1_15062", "label": 1, "note": "Khen nhân viên và giá rẻ, chê nước lẩu giống canh chua."}
+{"id": "res1_15065", "label": 2, "note": "Khen quán rộng rãi, đồ ăn ngon, chỉ góp ý nước thái ngọt."}
+{"id": "res1_15071", "label": 2, "note": "Khen lẩu ngon rẻ nhiều đồ ăn, phục vụ nhiệt tình."}
+{"id": "res1_15075", "label": 0, "note": "(khó) Chủ yếu chê đồ ăn và kết luận có nhiều lựa chọn tốt hơn."}
+{"id": "res1_15078", "label": 2, "note": "Khen đồ ăn ngon, phục vụ nhiệt tình, chỉ phiền vì hàng rong."}
+{"id": "res1_15080", "label": 1, "note": "Khen phục vụ và chỗ để xe, chê đồ ăn chưa ngon."}
+{"id": "res1_15091", "label": 1, "note": "Đánh giá ở mức cũng được, phần ăn nhiều."}
+{"id": "res1_15093", "label": 2, "note": "Khen phòng tập rộng sạch đẹp, máy móc hiện đại."}
+{"id": "res1_15114", "label": 0, "note": "Chê đồ ăn cực dở, khuyên nên đổi đầu bếp."}
+{"id": "res1_15125", "label": 1, "note": "(khó) Khen đồ ăn ngon nhưng chê đắt, nhân viên bỏ bê và ồn ào."}
+{"id": "res1_15130", "label": 1, "note": "Cảm nhận trung bình, món phở ở mức tạm ổn."}
+{"id": "res1_15149", "label": 2, "note": "Hài lòng quán sạch sẽ và dịch vụ tốt, sẽ quay lại thử phở."}
+{"id": "res1_15150", "label": 2, "note": "Khen quán sạch sẽ giá rẻ phở ngon, chỉ chê nhẹ thịt bò dai."}
+{"id": "res1_15156", "label": 2, "note": "Rất khen phở ngon và phục vụ, chỉ trừ điểm buổi tối có thiêu thân."}
+{"id": "res1_15157", "label": 1, "note": "Khen thịt chất lượng nhưng nước dùng không hợp khẩu vị."}
+{"id": "res1_15162", "label": 1, "note": "(khó) Mô tả không gian và đánh giá phục vụ ở mức ổn."}
+{"id": "res1_15193", "label": 1, "note": "Góp ý thêm món ăn kèm, không thể hiện cảm xúc rõ ràng."}
+{"id": "res1_15199", "label": 0, "note": "Phàn nàn bị đau bụng 2 lần sau khi ăn, lo ngại vệ sinh."}
+{"id": "res1_15207", "label": 1, "note": "(khó) Khen đồ ăn và giá cả hợp lý nhưng chê gay gắt phục vụ."}
+{"id": "res1_15210", "label": 2, "note": "Quán quen khen đồ ăn ngon, khuyên thử, chê nhẹ khoai tây và giá app."}
+{"id": "res1_15213", "label": 2, "note": "Khen hủ tiếu ngon nhiều giá rẻ, chê nhẹ quán ngộp và chờ lâu."}
+{"id": "res1_15219", "label": 2, "note": "Khen quán sạch sẽ, đồ ăn chất lượng, nhiều thịt."}
+{"id": "res1_15227", "label": 1, "note": "Đồ ăn ở mức ổn và no, nhưng phục vụ khi đông khách lộn xộn."}
+{"id": "res1_15233", "label": 2, "note": "Khen đồ ăn hợp khẩu vị, nhân viên nhanh nhẹn, không gian thoáng."}
+{"id": "res1_15239", "label": 2, "note": "Khen đồ ăn ngon đa dạng và sạch sẽ, chê nhẹ order chậm."}
+{"id": "res1_15243", "label": 2, "note": "Khen món ăn ngon nóng hổi, phục vụ nhanh, chê nhẹ quán nóng."}
+{"id": "res1_15245", "label": 0, "note": "Phàn nàn bảo vệ chỉ chỗ đỗ xe khiến khách bị phạt."}
+{"id": "res1_15247", "label": 2, "note": "Khen giá hợp lý, phục vụ dễ thương, món kho sả ngon."}
+{"id": "res1_15252", "label": 2, "note": "Rất khen quán về món ăn, giá cả và phục vụ, kết luận tuyệt vời."}
+{"id": "res1_15255", "label": 2, "note": "Khen đồ ăn rất ổn, quán sạch máy lạnh, chỉ chê hơi ồn ào."}
+{"id": "res1_15256", "label": 2, "note": "Khen đồ ăn ngon và lên nhanh, chỉ không thoải mái vì bàn bên ồn."}
+{"id": "res1_15258", "label": 0, "note": "Thất vọng về bữa ăn gần nhất, thịt nhiều mỡ và quán nóng."}
+{"id": "res1_15266", "label": 2, "note": "Khen quán sạch sẽ, phục vụ tốt, món ăn ngon miệng giá hợp lý."}
+{"id": "res1_15270", "label": 2, "note": "Đa dạng món ăn, phù hợp ăn uống gia đình."}
+{"id": "res1_15275", "label": 2, "note": "Khen không gian thoáng mát, giá cả hợp lý."}
+{"id": "res1_15277", "label": 1, "note": "(khó) Chỉ mô tả món ăn, không thể hiện thái độ rõ ràng."}
+{"id": "res1_15286", "label": 1, "note": "Phù hợp gia đình nhưng không gian hơi nhỏ vào buổi trưa."}
+{"id": "res1_15298", "label": 2, "note": "Khen đồ ăn ngon, phục vụ tốt, giá cả phải chăng."}
+{"id": "res1_15320", "label": 2, "note": "Khen đồ ăn ngon đậm vị dù không gian cũ, giá cao."}
+{"id": "res1_15325", "label": 2, "note": "Sườn vẫn rất ngon, cho 4 sao dù cơm hơi khô."}
+{"id": "res1_15327", "label": 1, "note": "Khen chê cân bằng về chất lượng món và thời gian chờ."}
+{"id": "res1_15331", "label": 2, "note": "Khen món ăn hấp dẫn, phục vụ chu đáo dù quán nóng."}
+{"id": "res1_15336", "label": 1, "note": "Khen chê lẫn lộn, sườn dai quán bẩn nhưng vài món ngon."}
+{"id": "res1_15339", "label": 2, "note": "Khen cơm sườn bò mềm ngon, quán đông giờ trưa."}
+{"id": "res1_15340", "label": 1, "note": "Canh và sườn ngon nhưng cơm chiên nhạt, sốt bình thường."}
+{"id": "res1_15341", "label": 2, "note": "Cơm rất ngon và sạch sẽ, nhược điểm hơi nóng."}
+{"id": "res1_15343", "label": 2, "note": "Khen cơm ngon thịt đậm đà, hơi nóng và giá cao."}
+{"id": "res1_15349", "label": 0, "note": "(khó) Phàn nàn sườn nướng nhiều lần bị sống tái dù cơm ngon."}
+{"id": "res1_1535", "label": 2, "note": "Khen ngợi toàn diện từ món ăn, không gian đến phục vụ."}
+{"id": "res1_15353", "label": 1, "note": "Chả cá ngon nhưng quán hơi nóng, khen chê cân bằng."}
+{"id": "res1_15368", "label": 2, "note": "Recommend nên thử, giá cả hợp lý cho 2 người."}
+{"id": "res1_15369", "label": 1, "note": "Đánh giá chất lượng đồ ăn ở mức cũng được."}
+{"id": "res1_15384", "label": 1, "note": "(khó) Đồ ăn khá ổn nhưng quán ồn và nhân viên chậm."}
+{"id": "res1_15393", "label": 2, "note": "Hài lòng về đồ ăn tươi ngon dù quán hơi nhỏ và ồn."}
+{"id": "res1_15396", "label": 1, "note": "Đồ ăn ngon nhưng thất vọng vì phục vụ đón khách kém."}
+{"id": "res1_15409", "label": 2, "note": "Khen không gian đẹp, giá vừa phải dù đợi món hơi lâu."}
+{"id": "res1_15410", "label": 1, "note": "Món ăn và giá ổn nhưng quán chưa được sạch sẽ."}
+{"id": "res1_15413", "label": 2, "note": "Khen nhân viên dễ thương, hỗ trợ tốt dù phải đợi."}
+{"id": "res1_15428", "label": 2, "note": "Giá phải chăng, món ăn vừa miệng và sẽ quay lại."}
+{"id": "res1_15429", "label": 1, "note": "(khó) Món ăn chỉ tạm được dù nhân viên phục vụ cực tốt."}
+{"id": "res1_15430", "label": 2, "note": "Khen đồ ăn ngon sạch, giá cả phải chăng."}
+{"id": "res1_15434", "label": 2, "note": "Món ăn hợp khẩu vị, phục vụ và lên món nhanh."}
+{"id": "res1_15438", "label": 2, "note": "Khen đồ ăn ngon, chất lượng, phục vụ tốt."}
+{"id": "res1_15444", "label": 2, "note": "Phục vụ nhanh nhẹn, đồ ăn giòn ngon dù hơi ít sốt."}
+{"id": "res1_15452", "label": 1, "note": "Khen món gà ngon nhưng chê lẩu cá đuối mặn."}
+{"id": "res1_15453", "label": 2, "note": "Hài lòng với nhiều món ngon và không gian thoáng mát."}
+{"id": "res1_15458", "label": 0, "note": "Chê món ăn siêu dầu mỡ và khuyên cân nhắc quán khác."}
+{"id": "res1_15464", "label": 1, "note": "Quán ở mức ổn, không xuất sắc như review đồn."}
+{"id": "res1_15465", "label": 2, "note": "Khen thức ăn ngon, lên món nhanh dù bất tiện gửi xe."}
+{"id": "res1_15472", "label": 2, "note": "Khen đồ ăn ngon, giá hợp lý, rất đáng trải nghiệm."}
+{"id": "res1_15475", "label": 2, "note": "Món ăn ngon, quán đông đúc nhộn nhịp."}
+{"id": "res1_15482", "label": 0, "note": "Thất vọng vì đồ ăn bình thường, giá cao và có côn trùng."}
+{"id": "res1_15485", "label": 2, "note": "Khen sườn xào chua ngọt ấn tượng, sẽ tiếp tục ủng hộ."}
+{"id": "res1_15487", "label": 0, "note": "(khó) Thất vọng vì vị không bằng xưa mà giá lại tăng cao."}
+{"id": "res1_15488", "label": 2, "note": "Hoài niệm, khen mì xào giòn và chúc quán buôn may bán đắt."}
+{"id": "res1_15490", "label": 0, "note": "(khó) Thất vọng vì hương vị không còn như xưa nên ít quay lại."}
+{"id": "res1_15502", "label": 0, "note": "Chê pad thai làm ẩu tả, lẩu rất mặn, rau lèo tèo."}
+{"id": "res1_15511", "label": 2, "note": "Món ăn ngon, sẽ tiếp tục ủng hộ dài dài."}
+{"id": "res1_15513", "label": 1, "note": "(khó) Mô tả gọi món ăn sáng, nhận xét cháo mịn."}
+{"id": "res1_1552", "label": 2, "note": "Khen thịt bò tơ chuẩn, mềm ngọt và khẩu phần lớn."}
+{"id": "res1_15536", "label": 0, "note": "Không thích vị trà quá ngọt ở quán."}
+{"id": "res1_15538", "label": 1, "note": "(khó) Chê món matcha mới dở nhưng khen hồng trà và nhân viên."}
+{"id": "res1_15542", "label": 2, "note": "Nghiện món bún lòng giá rẻ, dù quán hơi chật và chưa sạch."}
+{"id": "res1_15552", "label": 2, "note": "Khen miến trộn ngon miệng, bao bì đẹp, đồ ăn sạch sẽ"}
+{"id": "res1_15571", "label": 1, "note": "Trà nhạt bình thường, nhân viên chu đáo, cảm xúc trung bình"}
+{"id": "res1_15579", "label": 1, "note": "Đánh giá chi tiết, trà tạm ổn, khen chê cân bằng"}
+{"id": "res1_1558", "label": 1, "note": "Đồ ăn tạm được, góp ý trình bày đĩa rau"}
+{"id": "res1_15592", "label": 1, "note": "Hải sản tươi nhưng nước dùng hơi ngọt ngấy, tổng thể tạm ổn"}
+{"id": "res1_15596", "label": 0, "note": "Chê cơm khô, củ quả cứng, nước sốt nhạt"}
+{"id": "res1_15604", "label": 0, "note": "Chê bánh nguội ngắt không giòn, nhân ít, không đáng tiền"}
+{"id": "res1_15605", "label": 1, "note": "Đồ ăn ngon nhưng mất vệ sinh, tạm chấp nhận được"}
+{"id": "res1_15610", "label": 0, "note": "Phàn nàn phát hiện vật lạ trong rau, phải bỏ đồ"}
+{"id": "res1_15620", "label": 2, "note": "Khen đồ uống ngon, quán đẹp, chỉ chê nhẹ nhạc"}
+{"id": "res1_15621", "label": 0, "note": "Thất vọng vì quán quá ồn ào dồn dập, không ghé nữa"}
+{"id": "res1_15631", "label": 1, "note": "Khen nem lụi bánh xèo khá ngon nhưng chê rau héo"}
+{"id": "res1_15633", "label": 2, "note": "Khen đồ ăn siêu ngon, phục vụ nhiệt tình, vote 5 sao"}
+{"id": "res1_15634", "label": 2, "note": "Chủ yếu khen đồ ăn ngon rẻ, nhân viên dễ thương"}
+{"id": "res1_15637", "label": 2, "note": "Khen ngon, ship thoải mái, chỉ chê nhẹ nước chấm chua"}
+{"id": "res1_1565", "label": 2, "note": "Khen thịt bò ngon mềm, phục vụ tốt, chỉ chê dọn sớm"}
+{"id": "res1_15665", "label": 2, "note": "Nhiều cá ngon, giá 30k hợp lý đáng ăn"}
+{"id": "res1_15671", "label": 1, "note": "Đúng vị nhà làm, đánh giá thấy ok"}
+{"id": "res1_15687", "label": 0, "note": "Chê giá không hợp lý, sẽ không ghé lại"}
+{"id": "res1_15696", "label": 2, "note": "Khách quen khen đồ ăn ngon đỉnh, nước chấm đúng vị"}
+{"id": "res1_15713", "label": 0, "note": "Phàn nàn phục vụ chậm chạp, lờ đờ, trả nhầm món"}
+{"id": "res1_15716", "label": 2, "note": "Khen đồ ăn ngon giá hợp lý, phục vụ nhiệt tình"}
+{"id": "res1_15718", "label": 2, "note": "Khen combo ăn ngon đầy đặn, không có gì chê"}
+{"id": "res1_15726", "label": 2, "note": "Khen món ăn ngon đều, phục vụ nhanh sạch sẽ"}
+{"id": "res1_15752", "label": 1, "note": "(khó) Phàn nàn cho nhiều đá nhưng trà được, ship đúng giờ"}
+{"id": "res1_15758", "label": 1, "note": "Đánh giá thái độ và đồ ăn khá ổn, trung bình"}
+{"id": "res1_15766", "label": 1, "note": "(khó) Khen bít tết salad nhưng chê sinh tố toàn đá"}
+{"id": "res1_15782", "label": 0, "note": "Thất vọng vì ăn quá bình thường, bắt mua cả xôi"}
+{"id": "res1_15789", "label": 2, "note": "Khen pizza thơm nóng hổi, nhân viên nhiệt tình"}
+{"id": "res1_15792", "label": 1, "note": "Khen pizza đế dày nhưng chê pizza dứa và đế mỏng"}
+{"id": "res1_15807", "label": 1, "note": "Khen trà thơm giá rẻ nhưng chê đậu đỏ quá ngọt"}
+{"id": "res1_15814", "label": 2, "note": "Khen món ngon đầy đặn, đáng ghé dù có món nguội"}
+{"id": "res1_15823", "label": 1, "note": "Khen đồ mặn nhưng chê xôi khô không dẻo"}
+{"id": "res1_15835", "label": 0, "note": "Chê nước mắm nhạt, thịt nhiều mỡ, không ngon"}
+{"id": "res1_15839", "label": 1, "note": "Khen chê cân bằng, món tạm ổn, phục vụ ra đồ lâu"}
+{"id": "res1_15841", "label": 0, "note": "Chê phục vụ lâu mặt đanh, bún nguội, không quay lại"}
+{"id": "res1_15865", "label": 0, "note": "Bực mình vì thái độ phục vụ của nhân viên"}
+{"id": "res1_15866", "label": 0, "note": "Chê chè đắt, các món khác không tươi không ngon"}
+{"id": "res1_15868", "label": 1, "note": "Ăn không nhớ vị, cảm xúc nhạt, khó đặt lại"}
+{"id": "res1_15872", "label": 0, "note": "Thất vọng vì không ngon như tiếng đồn, ít lươn"}
+{"id": "res1_15894", "label": 2, "note": "Khen kem ngon bingsu tuyệt, nhân viên nhiệt tình"}
+{"id": "res1_15895", "label": 2, "note": "Khen kem chất lượng rõ vị, phục vụ tốt quán đẹp"}
+{"id": "res1_15898", "label": 0, "note": "Giao nhầm món, phải ăn tạm kèm tiếng thở dài"}
+{"id": "res1_1590", "label": 2, "note": "Khen đồ ăn ngon thịt tươi, nhân viên dễ thương"}
+{"id": "res1_15900", "label": 0, "note": "Chê mỳ ý nhạt toẹt, pizza không đặc sắc"}
+{"id": "res1_15912", "label": 1, "note": "Bánh nhân ít hơi dai, cảm nhận trung bình"}
+{"id": "res1_15914", "label": 1, "note": "Khen chê cân bằng về thịt ngấy và phục vụ lơ đễnh"}
+{"id": "res1_15919", "label": 1, "note": "(khó) Đồ ăn tạm ổn, lịch sự nhưng giá hơi cao"}
+{"id": "res1_15924", "label": 2, "note": "Khen ngon bổ rẻ, chủ quán tận tình, điểm trừ nhỏ"}
+{"id": "res1_15931", "label": 2, "note": "Khen nước dùng thanh đạm, thịt ngon ngọt mềm"}
+{"id": "res1_15933", "label": 0, "note": "Chê quán không cho hộp, ít chả, thịt ngọt quá"}
+{"id": "res1_15940", "label": 1, "note": "Đánh giá mức trung bình, cũng được"}
+{"id": "res1_15959", "label": 2, "note": "Khen khu ăn uống hay, nhân viên tốt, view đẹp"}
+{"id": "res1_15968", "label": 2, "note": "Khen ngon miệng, hài lòng dù đồ nóng ra hơi lâu"}
+{"id": "res1_15971", "label": 1, "note": "Đánh giá chất lượng bình thường"}
+{"id": "res1_15991", "label": 0, "note": "Chê mì ý quá ngấy và pizza nhạt, không quay lại"}
+{"id": "res1_16001", "label": 1, "note": "Khen ngon nhưng chê nước dùng mặn, cân bằng"}
+{"id": "res1_16011", "label": 2, "note": "Hài lòng, khen phục vụ nhanh và đồ ăn no"}
+{"id": "res1_16012", "label": 2, "note": "Khen trà thơm mát, giải nhiệt tốt"}
+{"id": "res1_16041", "label": 2, "note": "Khen chất lượng đã cải thiện, ăn ngon miệng"}
+{"id": "res1_16043", "label": 2, "note": "Khen đồ ăn ngon đậm đà, nhân viên thân thiện"}
+{"id": "res1_16044", "label": 2, "note": "Khen bánh trôi ấm nóng, thơm ngon hợp miệng"}
+{"id": "res1_16051", "label": 1, "note": "Bánh ăn được nhưng hơi nhiều mỡ, mức trung bình"}
+{"id": "res1_16056", "label": 2, "note": "Khen sushi tươi ngon, đồ ăn chất lượng đủ no"}
+{"id": "res1_16062", "label": 2, "note": "Khen không gian đẹp, phục vụ nhanh, đồ uống ngon"}
+{"id": "res1_16073", "label": 1, "note": "Khen chê cân bằng, giá rẻ nhưng vị bình thường"}
+{"id": "res1_16075", "label": 0, "note": "Chê quán vắng khách, bi quan về tương lai quán"}
+{"id": "res1_16083", "label": 1, "note": "Thông báo đổi quán, không có cảm xúc đánh giá"}
+{"id": "res1_16087", "label": 1, "note": "(khó) Đồ uống khá ngon nhưng chê chỗ ngồi và giá"}
+{"id": "res1_16089", "label": 2, "note": "(khó) Khen không gian rất đáng yêu, chấp nhận giá đắt"}
+{"id": "res1_16101", "label": 2, "note": "Khen bánh và trà quất ngon, sạch sẽ"}
+{"id": "res1_16104", "label": 1, "note": "Đồ uống ổn nhưng không ấn tượng, khen chê lẫn lộn"}
+{"id": "res1_16111", "label": 1, "note": "Khen đồ ăn vừa miệng nhưng chê khói và phục vụ chậm"}
+{"id": "res1_16134", "label": 1, "note": "Câu hỏi đóng góp thực đơn, không rõ cảm xúc"}
+{"id": "res1_16151", "label": 0, "note": "Phàn nàn về khoản phí dịch vụ không rõ ràng"}
+{"id": "res1_16164", "label": 2, "note": "Khen phở và quẩy ngon tuyệt vời, chê nhẹ quẩy to"}
+{"id": "res1_16169", "label": 1, "note": "Câu hỏi về dịch vụ ship mùa dịch, trung tính"}
+{"id": "res1_1617", "label": 2, "note": "Khen đồ ăn rất ngon, chủ quán dễ thương"}
+{"id": "res1_16173", "label": 2, "note": "Khen đồ uống ngon nguyên chất, phục vụ nhiệt tình"}
+{"id": "res1_16187", "label": 2, "note": "Khen bánh ngon, đóng gói cẩn thận, cho 8/10"}
+{"id": "res1_1619", "label": 2, "note": "Khen bún cá đầy đặn, sạch sẽ, góp ý làm giòn cá"}
+{"id": "res1_16192", "label": 1, "note": "Yêu cầu liên hệ, không mang cảm xúc"}
+{"id": "res1_16197", "label": 2, "note": "Khen ngợi nức nở món freeze caramel chuẩn gu"}
+{"id": "res1_1621", "label": 2, "note": "Khen hết lời từ đồ ăn đến phục vụ, sẽ quay lại"}
+{"id": "res1_1623", "label": 1, "note": "Bún nước không ngon nhưng bánh đa trộn đậm đà, cân bằng"}
+{"id": "res1_16230", "label": 1, "note": "Khen đồ ăn chất lượng nhưng bức xúc phí phát sinh"}
+{"id": "res1_16231", "label": 2, "note": "Khen không gian, phục vụ và đồ ăn hấp dẫn"}
+{"id": "res1_16235", "label": 0, "note": "Quyết định không quay lại vì bực bội phí gửi xe"}
+{"id": "res1_16244", "label": 1, "note": "(khó) Khen chê đan xen, trà đào và mỳ ngon nhưng vài món ngấy"}
+{"id": "res1_16245", "label": 2, "note": "Rất thích không gian và phục vụ chu đáo của quán"}
+{"id": "res1_16247", "label": 2, "note": "Hài lòng cách đóng gói, sẽ quay lại thử món khác"}
+{"id": "res1_16263", "label": 2, "note": "Khen móng giò chất lượng, nước dùng thơm ngon"}
+{"id": "res1_16269", "label": 2, "note": "Khen bún đầy đặn, sạch sẽ và đóng gói hộp giấy"}
+{"id": "res1_16272", "label": 0, "note": "Chê ít món và không hợp khẩu vị"}
+{"id": "res1_16276", "label": 2, "note": "Khen giá rẻ, chất lượng ổn định, ủng hộ lâu năm"}
+{"id": "res1_16287", "label": 0, "note": "Chê nhạc ồn ào và đĩa đựng nem rất bẩn"}
+{"id": "res1_1630", "label": 0, "note": "Chê phục vụ chậm, hay nhầm món và vị quá ngọt"}
+{"id": "res1_16304", "label": 1, "note": "Hỏi thông tin mở cửa, không có cảm xúc"}
+{"id": "res1_16305", "label": 2, "note": "Khen cơm tấm hoàn hảo, đồ ăn ướp cực ngon"}
+{"id": "res1_16309", "label": 2, "note": "Khen cơm tấm hoàn hảo, tẩm ướp cực ngon"}
