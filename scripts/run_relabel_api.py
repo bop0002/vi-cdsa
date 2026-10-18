@@ -58,32 +58,47 @@ def annotate_chunk(client, model: str, items: list[dict], retries: int = 4) -> l
     raise RuntimeError(f"chunk starting at {items[0]['id']} failed after {retries} attempts")
 
 
+def run_batch(client, model: str, batch: Path, chunk: int) -> str:
+    out = RESULT_DIR / batch.name
+    items = [json.loads(l) for l in batch.read_text(encoding="utf-8").splitlines() if l.strip()]
+    rows = []
+    for i in range(0, len(items), chunk):
+        rows += annotate_chunk(client, model, items[i:i + chunk])
+    tmp = out.with_suffix(".part")
+    tmp.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n", encoding="utf-8")
+    tmp.replace(out)  # only complete batches get the final name
+    return f"{batch.name}: {len(rows)} rows"
+
+
 def main() -> int:
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
     from openai import OpenAI
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--only", nargs="*", help="batch names without .jsonl, e.g. A_000 B_000")
+    parser.add_argument("--workers", type=int, default=4, help="batches annotated in parallel (mind API rate limits)")
+    parser.add_argument("--chunk", type=int, default=CHUNK, help="reviews per API request")
     args = parser.parse_args()
     client = OpenAI(api_key=os.environ["RELABEL_API_KEY"], base_url=os.environ.get("RELABEL_BASE_URL"))
     model = os.environ["RELABEL_MODEL"]
     RESULT_DIR.mkdir(parents=True, exist_ok=True)
 
-    batches = sorted(BATCH_DIR.glob("*.jsonl"))
+    batches = [b for b in sorted(BATCH_DIR.glob("*.jsonl")) if not (RESULT_DIR / b.name).exists()]
     if args.only:
         batches = [b for b in batches if b.stem in set(args.only)]
-    for batch in batches:
-        out = RESULT_DIR / batch.name
-        if out.exists():
-            continue
-        items = [json.loads(l) for l in batch.read_text(encoding="utf-8").splitlines() if l.strip()]
-        rows = []
-        for i in range(0, len(items), CHUNK):
-            rows += annotate_chunk(client, model, items[i:i + CHUNK])
-        tmp = out.with_suffix(".part")
-        tmp.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n", encoding="utf-8")
-        tmp.replace(out)  # only complete batches get the final name
-        print(f"{batch.name}: {len(rows)} rows")
-    return 0
+    print(f"{len(batches)} batches to do, {args.workers} workers, {args.chunk} reviews/request")
+    failed = 0
+    with ThreadPoolExecutor(max_workers=args.workers) as pool:
+        futures = {pool.submit(run_batch, client, model, b, args.chunk): b for b in batches}
+        for f in as_completed(futures):
+            try:
+                print(f.result(), flush=True)
+            except Exception as e:  # one failed batch must not stop the others; rerun picks it up
+                failed += 1
+                print(f"{futures[f].name}: FAILED ({e})", flush=True)
+    print(f"done; {failed} failed batch(es) — rerun the same command to retry them")
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
