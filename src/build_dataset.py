@@ -7,8 +7,8 @@ import pandas as pd
 
 from src.checks import run_checks
 from src.config import OUTPUT_COLUMNS, PROCESSED, SEED
-from src.filters import add_text_columns, apply_row_filters, dedup_with_conflicts, remove_cross_overlap
-from src.io_sources import load_book, load_res1
+from src.prepare import clean_sources
+from src.relabel import RELABEL_FILE
 from src.segment import segment, to_ml
 from src.split import balanced_subset, group_split, match_train_size
 
@@ -32,6 +32,14 @@ def write_audit_if_missing(df: pd.DataFrame, path: Path) -> bool:
     return True
 
 
+def load_relabels(path: Path = RELABEL_FILE) -> pd.DataFrame | None:
+    """Content-based labels from the relabel step (docs/relabel_runbook.md), or None if not produced yet."""
+    path = Path(path)
+    if not path.exists():
+        return None
+    return pd.read_csv(path, encoding="utf-8-sig")[["id", "new_label"]]
+
+
 def main() -> int:
     log = {"seed": SEED, "steps": [], "splits": {}}
 
@@ -40,15 +48,11 @@ def main() -> int:
                              "B": {"n": len(b), "labels": dist(b)}})
         print(f"{name:<20} A={len(a):>6} {dist(a)} | B={len(b):>6} {dist(b)}")
 
-    a, b = load_book(), load_res1()
-    step("load", a, b)
-    a, b = apply_row_filters(add_text_columns(a)), apply_row_filters(add_text_columns(b))
-    step("row_filters", a, b)
-    a = dedup_with_conflicts(a)
-    b = dedup_with_conflicts(b, priority_col="orig_split", priority={"train": 0, "val": 1, "test": 2})
-    step("dedup", a, b)
-    a, b = remove_cross_overlap(a, b)
-    step("cross_overlap", a, b)
+    relabels = load_relabels()
+    log["relabel_file"] = str(RELABEL_FILE) if relabels is not None else None
+    print(f"relabels: {len(relabels)} rows from {RELABEL_FILE}" if relabels is not None
+          else "relabels: none (using original labels)")
+    a, b = clean_sources(relabels, step)
     a = group_split(a)
     b = b.assign(split=b["orig_split"])
     a = match_train_size(a, b)

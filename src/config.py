@@ -12,6 +12,6 @@ LABEL_NAMES = {0: "negative", 1: "neutral", 2: "positive"}
 RES1_LABEL_MAP = {0: 0, 1: 2, 2: 1}
 
 OUTPUT_COLUMNS = [
-    "id", "domain", "source", "group_id", "rating", "label", "split",
+    "id", "domain", "source", "group_id", "rating", "label", "label_source", "split",
     "text_raw", "text_clean", "text_ml", "text_dl", "n_words",
 ]
