@@ -43,6 +43,19 @@ def test_kg_context(raw, expected):
     assert apply_teencode(raw) == expected
 
 
+@pytest.mark.parametrize("raw, expected", [
+    ("coca 27 k, sữa chua", "coca 27 k, sữa chua"),                       # giá: giữ "k"
+    ("xôi thịt là 13 k, còn", "xôi thịt là 13 k, còn"),
+    ("lạc và rau mà 35 k", "lạc và rau mà 35 k"),                         # cuối câu
+    ("quyển 1 k hiểu sao bị bẩn", "quyển 1 không hiểu sao bị bẩn"),       # phủ định
+    ("tập 2 k bị gì", "tập 2 không bị gì"),
+    ("k thích lắm", "không thích lắm"),
+    ("giá 40k, ok", "giá 40k, ok"),
+])
+def test_k_after_number_context(raw, expected):
+    assert apply_teencode(raw) == expected
+
+
 def test_clean_text_full_pipeline():
     assert clean_text("Cực kì hài lòng. SP đẹp lắm ko chê đc 👍") == "sản phẩm đẹp lắm không chê được"
 

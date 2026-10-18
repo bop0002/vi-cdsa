@@ -17,7 +17,7 @@ COMMAS = re.compile(r"\s*,[\s,]*")
 SPACES = re.compile(r"\s+")
 
 TEENCODE = {
-    "k": "không", "ko": "không", "kh": "không", "hk": "không", "hok": "không",
+    "ko": "không", "kh": "không", "hk": "không", "hok": "không",
     "khg": "không", "k0": "không",
     "dc": "được", "đc": "được", "dk": "được", "đk": "được",
     "sp": "sản phẩm", "sd": "sử dụng", "nv": "nhân viên", "đt": "điện thoại",
@@ -31,6 +31,8 @@ WORD = re.compile(r"\b\w+\b")
 # "kg" = "không" (phủ định), TRỪ khi đứng sau số ("2 kg", "6kg" là cân nặng).
 # "6kg" là một token nên WORD không bao giờ khớp riêng "kg"; chỉ cần chặn trường hợp "2 kg".
 KG_AS_NEGATION = re.compile(r"(?<!\d)(?<!\d )\bkg\b")
+# "k" = "không", TRỪ khi là giá (nghìn đồng): sau "<số> " và ngay trước dấu phẩy/cuối câu ("27 k, ...", "... 35 k").
+K_AS_NEGATION = re.compile(r"(?<!\d )\bk\b|(?<=\d )k\b(?!\s*(?:,|$))")
 
 
 def strip_platform_text(t: str) -> str:
@@ -54,6 +56,7 @@ def normalize_format(t: str) -> str:
 
 def apply_teencode(t: str) -> str:
     t = KG_AS_NEGATION.sub("không", t)
+    t = K_AS_NEGATION.sub("không", t)
     return WORD.sub(lambda m: TEENCODE.get(m.group(0), m.group(0)), t)
 
 
