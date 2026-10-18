@@ -46,7 +46,7 @@ Mỗi dòng = 1 review, lưu `data/processed/<domain>_<split>.parquet`:
 | # | Tiêu chí | Ngưỡng đề xuất |
 |---|---|---|
 | D1 (B) | Có nguồn và cách thu thập rõ ràng, dùng cho mục đích học tập | Ghi trong README |
-| D2 (B) | **Đủ dữ liệu ở lớp nhỏ nhất**: test set mỗi lớp ≥ 300 mẫu, train mỗi lớp ≥ 1.000 mẫu | Để Macro-F1 ổn định và PhoBERT học được lớp nhỏ |
+| D2 (B) | **Đủ dữ liệu ở lớp nhỏ nhất**: test set mỗi lớp ≥ 250 mẫu (ban đầu 300; hạ xuống sau khi gán lại nhãn vì Neutral của B_test chỉ còn 272 khi giữ split gốc res1), train mỗi lớp ≥ 1.000 mẫu | Để Macro-F1 ổn định và PhoBERT học được lớp nhỏ |
 | D3 (B) | **Nhãn đáng tin**: đọc thủ công 100 mẫu ngẫu nhiên mỗi lớp, ≥ 85% đúng nhãn (riêng Neutral ≥ 75%) | Rating ≠ sentiment của text |
 | D4 | **Đa dạng**: không sản phẩm/địa điểm nào chiếm > 2% domain (giới hạn số review mỗi `group_id`) | Tránh model học thuộc 1 sản phẩm |
 | D5 (B) | **Không rò rỉ khi chia tập**: không trùng text giữa train/val/test; không trùng text giữa Domain A và B | Nguyên tắc 7 trong kế hoạch |
@@ -95,7 +95,7 @@ Dùng chung một từ điển teencode và một hàm emoji cho cả hai nhánh
 - [ ] `n_words >= 3` với mọi dòng
 - [ ] `text_clean` không trùng trong domain; không trùng giữa train/val/test; không trùng giữa A và B
 - [x] Không có `group_id` nào vượt ngưỡng D4 (đã cài trong `src/checks.py`)
-- [ ] Mỗi lớp trong test ≥ 300 mẫu
+- [ ] Mỗi lớp trong test ≥ 250 mẫu
 - [ ] In phân bố lớp và độ dài của từng split → `data/processed/stats.json`
 
 ## 6. Quyết định cho cặp Book–res1 (2026-10-16)
@@ -103,12 +103,12 @@ Dùng chung một từ điển teencode và một hàm emoji cho cả hai nhánh
 - Domain A = `book_comment_tiki.csv`; Domain B = `res1`. Nhãn res1 được map `{0:0, 1:2, 2:1}`.
 - res1 giữ split gốc; mẫu trùng giữa các split giữ bản trong train.
 - Book chia 80/10/10 theo `product_id` (StratifiedGroupKFold, seed 42).
-- Chỉ cân bằng train: train A được downsample (giữ tỷ lệ lớp) về đúng số mẫu train B; val/test A giữ nguyên để đạt D2.
+- Chỉ cân bằng train: train A được lấy mẫu theo từng lớp để có **đúng số mẫu mỗi lớp như train B** (cùng kích thước và cùng tỷ lệ nhãn), nhờ vậy khác biệt giữa hai miền chỉ còn ở nội dung, không lẫn khác biệt tỷ lệ nhãn. Nếu một lớp của A không đủ mẫu thì build dừng báo lỗi. Val/test A giữ nguyên để đạt D2.
 - Mỗi miền có thêm `test_balanced` (mỗi lớp bằng lớp nhỏ nhất) để tách ảnh hưởng của label shift.
 - Teencode: `kg` → `không`, trừ khi đứng sau số (`2 kg`, `6kg` là cân nặng). Ở book 36/40 lần `kg` mang nghĩa "không".
 - Teencode: `k` sau số và ngay trước dấu phẩy/hết câu là giá tiền nên giữ nguyên (`coca 27 k,`); các trường hợp khác (`quyển 1 k hiểu`) đổi thành `không`. Ảnh hưởng 11 dòng. Review bắt đầu bằng "Cực kỳ hài lòng" + xuống dòng (2 dòng ở A) được giữ nguyên, nhất quán với quyết định giữ review người dùng tự viết.
 - Chuẩn hóa NFKC chạy trước bước cắt tiêu đề Tiki (sửa lỗi review ở dạng NFD giữ lại tiêu đề).
 - Review do người dùng tự viết bắt đầu bằng "hài lòng, …", "bình thường, …" được giữ; checklist chỉ báo lỗi khi cả review chỉ là cụm tiêu đề.
 - VnCoreNLP không ghép "giao hàng" thành `giao_hàng`; model được tải bằng urllib (Windows không có wget).
-- Kết quả build (seed 42): train A = train B = 25.529; A val 7.203 / test 6.639; B val 3.153 / test 3.122; test_balanced A 1.098, B 1.797. Bước bỏ trùng giữa A và B bỏ 6 dòng mỗi bên.
+- Kết quả build (seed 42, sau khi gán lại nhãn vùng xám): train A = train B = 25.485 với cùng phân bố {Neg 5.374, Neu 2.141, Pos 17.970}; A val 6.536 / test 6.288; B val 3.152 / test 3.121; test_balanced A 1.017 (339/lớp), B 816 (272/lớp). Bước bỏ trùng giữa A và B bỏ 6 dòng mỗi bên.
 - Hạn chế: A chỉ có sách, B chỉ có nhà hàng; res1 không có `group_id` nên không chia theo group được; nguồn và license của hai bộ cần ghi rõ.

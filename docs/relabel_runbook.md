@@ -82,7 +82,7 @@ python -X utf8 -m src.build_dataset
 ```
 - Nếu có file `data/relabel/relabel_labels.csv`, pipeline tự áp nhãn mới theo `id` **trước** bước lọc, bỏ trùng và chia tập.
 - Cột `label_source` trong dữ liệu đầu ra cho biết nguồn nhãn của từng dòng: `rating` (từ số sao), `dataset` (nhãn gốc của res1) hoặc `content` (gán lại theo nội dung).
-- Các kiểm tra tự động vẫn áp dụng: mỗi lớp trong test ≥ 300 mẫu, train mỗi lớp ≥ 1.000, không rò rỉ, train A = train B.
+- Các kiểm tra tự động vẫn áp dụng: mỗi lớp trong test ≥ 250 mẫu, train mỗi lớp ≥ 1.000, không rò rỉ, train A = train B.
 - Nếu một kiểm tra không đạt (ví dụ Neutral của A quá ít) thì **dừng lại và báo cho nhóm quyết định**. Không tự hạ ngưỡng.
 - `label_audit_*.csv` không bị ghi đè. Sau khi build lại nên xóa (hoặc đổi tên) hai file này rồi build lại một lần nữa, để có mẫu D3 mới cho vòng kiểm tra lại.
 

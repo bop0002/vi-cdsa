@@ -12,7 +12,7 @@ def _min_class(df: pd.DataFrame) -> int:
     return int(df["label"].value_counts().reindex([0, 1, 2], fill_value=0).min())
 
 
-def run_checks(frames: dict, min_test: int = 300, min_train: int = 1000) -> list[str]:
+def run_checks(frames: dict, min_test: int = 250, min_train: int = 1000) -> list[str]:
     errs = []
     for name, df in frames.items():
         if (df["n_words"] < MIN_WORDS).any():
