@@ -1,0 +1,14 @@
+{
+  "seed": 42,
+  "tfidf": {
+    "ngram_range": [1, 2],
+    "max_features": 20000,
+    "min_df": 2,
+    "sublinear_tf": true
+  },
+  "search": {
+    "C": [0.1, 1.0, 10.0],
+    "class_weight": [null, "balanced"]
+  },
+  "max_iter": 5000
+}
