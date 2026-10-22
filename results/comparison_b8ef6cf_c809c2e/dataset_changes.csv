@@ -1,0 +1,11 @@
+file,old_rows,new_rows,common_ids,added_ids,removed_ids,changed_label,changed_text_raw,changed_text_clean,changed_text_ml,changed_source,changed_split,same_prediction_inputs,same_file_bytes,status
+A_test.parquet,6288,6288,6288.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,
+A_test_balanced.parquet,1017,1017,1017.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,
+A_train.parquet,25485,30785,15228.0,15557.0,10257.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,
+A_train_balanced.parquet,0,18471,,,,,,,,,,,,added
+A_val.parquet,6536,6536,6536.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,True,
+B_test.parquet,3121,3121,3121.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,False,
+B_test_balanced.parquet,816,816,816.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,False,
+B_train.parquet,25485,30785,19828.0,10957.0,5657.0,0.0,0.0,0.0,0.0,0.0,0.0,False,False,
+B_train_balanced.parquet,0,18471,,,,,,,,,,,,added
+B_val.parquet,3152,3152,3152.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,True,False,

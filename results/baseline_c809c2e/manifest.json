@@ -1,0 +1,255 @@
+{
+  "created_utc": "2026-10-22T09:22:25.041151+00:00",
+  "config": {
+    "seed": 42,
+    "tfidf": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "max_features": 20000,
+      "min_df": 2,
+      "sublinear_tf": true
+    },
+    "search": {
+      "C": [
+        0.1,
+        1.0,
+        10.0
+      ],
+      "class_weight": [
+        null,
+        "balanced"
+      ]
+    },
+    "max_iter": 5000
+  },
+  "python": "3.11.9",
+  "versions": {
+    "scikit-learn": "1.9.1",
+    "pandas": "3.0.6",
+    "numpy": "2.2.4",
+    "scipy": "1.17.1",
+    "joblib": "1.5.3",
+    "pyarrow": "26.0.0"
+  },
+  "data_sha256": {
+    "A_train.parquet": "1b7aff79fc6aac4a141176d1c7de6fa5b281982f84a90759bbd4c8f1221c1651",
+    "A_val.parquet": "effcc0fee289aef941a76252b892459f940c9a44e2eb86e859c2689e316ac0a6",
+    "B_train.parquet": "fbff91cfce864e2debf2839ca84f791bc96f0b0ac4ffb31e805dbce6148ce748",
+    "B_val.parquet": "a180bdc4f722b97e90d93d3a6d05796d9b787743a9a700906f453916efd5adf8"
+  },
+  "models": {
+    "logistic_regression_A": {
+      "model": "logistic_regression",
+      "train_domain": "A",
+      "checkpoint_sha256": "f549ce7386212d45785207fb304e79dc44f34be1f674329f88e8d5046423ba8e",
+      "selected": {
+        "C": 1.0,
+        "class_weight": null,
+        "validation_macro_f1": 0.6862240256960467,
+        "fit_seconds": 1.1428813000002265
+      },
+      "trials": [
+        {
+          "C": 0.1,
+          "class_weight": null,
+          "validation_macro_f1": 0.6430761330810738,
+          "fit_seconds": 0.8400026999988768
+        },
+        {
+          "C": 0.1,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.6472148795114511,
+          "fit_seconds": 0.3860086999993655
+        },
+        {
+          "C": 1.0,
+          "class_weight": null,
+          "validation_macro_f1": 0.6862240256960467,
+          "fit_seconds": 1.1428813000002265
+        },
+        {
+          "C": 1.0,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.6763574898712239,
+          "fit_seconds": 0.8448690000004717
+        },
+        {
+          "C": 10.0,
+          "class_weight": null,
+          "validation_macro_f1": 0.6712973112608772,
+          "fit_seconds": 2.7592850999990333
+        },
+        {
+          "C": 10.0,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.662767604941974,
+          "fit_seconds": 2.0853399999996327
+        }
+      ],
+      "vocabulary_size": 20000,
+      "vectorizer_seconds": 2.241402100000414
+    },
+    "linear_svc_A": {
+      "model": "linear_svc",
+      "train_domain": "A",
+      "checkpoint_sha256": "f877dfb456bf0943c25b7637ca8963aa464ac1bd425792cea0c78c845ef711d4",
+      "selected": {
+        "C": 0.1,
+        "class_weight": null,
+        "validation_macro_f1": 0.6796687630711777,
+        "fit_seconds": 0.37695650000023306
+      },
+      "trials": [
+        {
+          "C": 0.1,
+          "class_weight": null,
+          "validation_macro_f1": 0.6796687630711777,
+          "fit_seconds": 0.37695650000023306
+        },
+        {
+          "C": 0.1,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.6794883409493563,
+          "fit_seconds": 0.29312149999896064
+        },
+        {
+          "C": 1.0,
+          "class_weight": null,
+          "validation_macro_f1": 0.669318746239644,
+          "fit_seconds": 0.7887510000000475
+        },
+        {
+          "C": 1.0,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.6647825239041812,
+          "fit_seconds": 0.8687487000006513
+        },
+        {
+          "C": 10.0,
+          "class_weight": null,
+          "validation_macro_f1": 0.6308174436458464,
+          "fit_seconds": 4.674144000000524
+        },
+        {
+          "C": 10.0,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.6290159874553033,
+          "fit_seconds": 4.975542800000767
+        }
+      ],
+      "vocabulary_size": 20000,
+      "vectorizer_seconds": 2.241402100000414
+    },
+    "logistic_regression_B": {
+      "model": "logistic_regression",
+      "train_domain": "B",
+      "checkpoint_sha256": "1948031911811260bbc70b4df59022c52c78a454d2b09bee2657abb0d0cdc342",
+      "selected": {
+        "C": 1.0,
+        "class_weight": null,
+        "validation_macro_f1": 0.7758459530097331,
+        "fit_seconds": 1.0827260999994905
+      },
+      "trials": [
+        {
+          "C": 0.1,
+          "class_weight": null,
+          "validation_macro_f1": 0.7459373034408913,
+          "fit_seconds": 0.7599246999998286
+        },
+        {
+          "C": 0.1,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.7276127068650066,
+          "fit_seconds": 0.6475025999989157
+        },
+        {
+          "C": 1.0,
+          "class_weight": null,
+          "validation_macro_f1": 0.7758459530097331,
+          "fit_seconds": 1.0827260999994905
+        },
+        {
+          "C": 1.0,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.767895577493293,
+          "fit_seconds": 1.3295488000003388
+        },
+        {
+          "C": 10.0,
+          "class_weight": null,
+          "validation_macro_f1": 0.7668576218116113,
+          "fit_seconds": 1.79342700000052
+        },
+        {
+          "C": 10.0,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.7661001791107697,
+          "fit_seconds": 2.357420700000148
+        }
+      ],
+      "vocabulary_size": 20000,
+      "vectorizer_seconds": 4.507978399999047
+    },
+    "linear_svc_B": {
+      "model": "linear_svc",
+      "train_domain": "B",
+      "checkpoint_sha256": "7bc268e513e6a4c90922444f86beb806957c095f3ff08980a40e78511f25124c",
+      "selected": {
+        "C": 0.1,
+        "class_weight": "balanced",
+        "validation_macro_f1": 0.7728632478632479,
+        "fit_seconds": 0.4045909999986179
+      },
+      "trials": [
+        {
+          "C": 0.1,
+          "class_weight": null,
+          "validation_macro_f1": 0.771077917023343,
+          "fit_seconds": 0.3908518999996886
+        },
+        {
+          "C": 0.1,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.7728632478632479,
+          "fit_seconds": 0.4045909999986179
+        },
+        {
+          "C": 1.0,
+          "class_weight": null,
+          "validation_macro_f1": 0.7673596076961401,
+          "fit_seconds": 0.8903996999997617
+        },
+        {
+          "C": 1.0,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.7689371727872917,
+          "fit_seconds": 0.9567338999986532
+        },
+        {
+          "C": 10.0,
+          "class_weight": null,
+          "validation_macro_f1": 0.7502698913589047,
+          "fit_seconds": 6.1298230000011245
+        },
+        {
+          "C": 10.0,
+          "class_weight": "balanced",
+          "validation_macro_f1": 0.7514647025372541,
+          "fit_seconds": 7.2249628999998095
+        }
+      ],
+      "vocabulary_size": 20000,
+      "vectorizer_seconds": 4.507978399999047
+    }
+  },
+  "selection": "source validation macro_f1; ties keep first candidate; no refit",
+  "test_sha256": {
+    "A_test.parquet": "5a96ab6bcb0d1d10c405b498108d728d2c88f3b7ac64c8074465f2472d11c8dc",
+    "A_test_balanced.parquet": "fc2a4ee903cb2fff68ec7e13b87ea63a5d16a515b030dffd9183ecbe40234709",
+    "B_test.parquet": "49cb75464c6b218d468612761804c0303b2557a218227e4c182716adf1c65e2c",
+    "B_test_balanced.parquet": "e31a22da81cc51a1d62a3c78d31179eb4258ec46a6411c1a8500ed07d7b9ed9c"
+  }
+}

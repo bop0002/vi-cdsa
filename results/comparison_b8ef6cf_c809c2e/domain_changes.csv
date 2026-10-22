@@ -1,0 +1,3 @@
+domain,old_rows,new_rows,common_ids,added_ids,removed_ids,changed_label,changed_text_raw,changed_text_clean,changed_text_ml,changed_source,changed_split,same_prediction_inputs
+A,38309,43609,28052,15557,10257,0,0,0,0,0,0,False
+B,31758,37058,26101,10957,5657,0,0,0,0,0,0,False

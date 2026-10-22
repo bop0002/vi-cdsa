@@ -1,0 +1,353 @@
+{
+  "git_refs": {
+    "old": "b8ef6cf4a969a768798cd1e436abd11766ba3aee",
+    "new": "c809c2e1371eeb6fd85388f04be70e04d02a442d"
+  },
+  "same_config": true,
+  "same_library_versions": true,
+  "training": "Fresh TF-IDF and estimators; no loading of old checkpoints during training",
+  "schemas": [
+    {
+      "version": "old",
+      "file": "A_test.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "new",
+      "file": "A_test.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "old",
+      "file": "A_test_balanced.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "new",
+      "file": "A_test_balanced.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "old",
+      "file": "A_train.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "new",
+      "file": "A_train.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "new",
+      "file": "A_train_balanced.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "old",
+      "file": "A_val.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "new",
+      "file": "A_val.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "old",
+      "file": "B_test.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "new",
+      "file": "B_test.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "float64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "old",
+      "file": "B_test_balanced.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "new",
+      "file": "B_test_balanced.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "float64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "old",
+      "file": "B_train.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "new",
+      "file": "B_train.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "float64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "new",
+      "file": "B_train_balanced.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "float64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "old",
+      "file": "B_val.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "int64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    },
+    {
+      "version": "new",
+      "file": "B_val.parquet",
+      "schema": {
+        "id": "str",
+        "domain": "str",
+        "source": "str",
+        "group_id": "str",
+        "rating": "float64",
+        "label": "int64",
+        "label_source": "str",
+        "split": "str",
+        "text_raw": "str",
+        "text_clean": "str",
+        "text_ml": "str",
+        "text_dl": "str",
+        "n_words": "int64"
+      }
+    }
+  ]
+}
