@@ -49,6 +49,7 @@ cells.append(nbf.v4.new_markdown_cell("""### 3. Tự động Kéo Mã nguồn v�
 # Cell 5: Code Mount & Path
 cells.append(nbf.v4.new_code_cell("""import os
 import sys
+from pathlib import Path
 
 # Kiểm tra nếu đang chạy trên Google Colab
 if 'google.colab' in sys.modules or os.path.exists('/content'):
@@ -123,8 +124,10 @@ Chúng ta huấn luyện mô hình cho cả 2 miền (Domain A và Domain B) v�
 """))
 
 # Cell 11: Code Train Loop
-cells.append(nbf.v4.new_code_cell("""import torch
-from src.phobert import SentimentPhoBERT, train_phobert, evaluate_model
+cells.append(nbf.v4.new_code_cell("""from pathlib import Path
+import torch
+from torch.utils.data import DataLoader
+from src.phobert import SentimentPhoBERT, ReviewDataset, train_phobert, evaluate_model
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
@@ -184,9 +187,13 @@ cells.append(nbf.v4.new_markdown_cell("""### 7. Thực nghiệm In-Domain & Cros
 
 # Cell 13: Code Evaluation
 cells.append(nbf.v4.new_code_cell("""import json
+from pathlib import Path
 import matplotlib.pyplot as plt
+import pandas as pd
 import seaborn as sns
-from src.phobert import LABEL_NAMES
+import torch
+from torch.utils.data import DataLoader
+from src.phobert import LABEL_NAMES, ReviewDataset, SentimentPhoBERT, evaluate_model
 
 test_loaders = {
     "A": DataLoader(ReviewDataset(splits["A_test"]["text_dl"], splits["A_test"]["label"]), batch_size=BATCH_SIZE, shuffle=False, collate_fn=collator),
