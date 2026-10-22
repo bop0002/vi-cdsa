@@ -1,0 +1,3 @@
+-r requirements-baseline.txt
+emoji
+py_vncorenlp
