@@ -92,9 +92,54 @@ def evaluate(data_dir, model_dir, output_dir):
     summarize(output_dir)
 
 
+def write_readable_summary(output_dir):
+    """Render existing metrics for reading without changing the source CSV."""
+    output_dir = Path(output_dir)
+    metrics = pd.read_csv(output_dir / "metrics" / "summary.csv")
+    names = {"logistic_regression": "Logistic Regression", "linear_svc": "LinearSVC"}
+    directions = [("A", "A"), ("B", "B"), ("A", "B"), ("B", "A")]
+    lines = ["# Kết quả đánh giá mô hình", "",
+             f"Bộ kết quả: `{output_dir.name}` · Nguồn: [summary.csv](summary.csv).", "",
+             "A = đánh giá sách Tiki; B = đánh giá nhà hàng. Chiều đọc: **miền train → miền test**.",
+             "A→A, B→B: cùng miền. A→B, B→A: khác miền.", "",
+             "Điểm số hiển thị trên thang **0–100%**, làm tròn 2 chữ số thập phân.",
+             "**Accuracy** là tỷ lệ dự đoán đúng. **Macro-F1** là trung bình F1 của ba lớp, không phải tỷ lệ dự đoán đúng.",
+             "CSV gốc giữ nguyên độ chính xác số liệu. Không train hoặc đánh giá lại để tạo bảng này.", ""]
+    for split, title in (("test", "Test gốc"), ("test_balanced", "Test cân bằng")):
+        subset = metrics[metrics.split == split]
+        lines += [f"## {title}", "",
+                  "### So sánh nhanh: Accuracy và Macro-F1", "",
+                  "| Train → Test | Số mẫu test | LR · Accuracy | SVC · Accuracy | LR · Macro-F1 | SVC · Macro-F1 |",
+                  "|---|---:|---:|---:|---:|---:|"]
+        for source, target in directions:
+            pair = subset[(subset.train_domain == source) & (subset.test_domain == target)].set_index("model")
+            lr, svc = pair.loc["logistic_regression"], pair.loc["linear_svc"]
+            cells = [f"{row[metric] * 100:.2f}%" for metric in ("accuracy", "macro_f1") for row in (lr, svc)]
+            lines.append(f"| {source}→{target} | {int(lr.n_test):,} | " + " | ".join(cells) + " |")
+        for model, name in names.items():
+            lines += ["", f"### {name} · Chi tiết", "",
+                      "| Train → Test | Precision (macro) | Recall (macro) | F1 (weighted) | Thời gian dự đoán cả tập |",
+                      "|---|---:|---:|---:|---:|"]
+            for source, target in directions:
+                row = subset[(subset.model == model) & (subset.train_domain == source)
+                             & (subset.test_domain == target)].iloc[0]
+                lines.append(f"| {source}→{target} | {row.macro_precision * 100:.2f}% | "
+                             f"{row.macro_recall * 100:.2f}% | {row.weighted_f1 * 100:.2f}% | "
+                             f"{row.predict_seconds:.3f} giây |")
+        lines.append("")
+    lines += ["## Cách đọc các chỉ số", "",
+              "- **Precision (macro):** precision trung bình của ba lớp, mỗi lớp có trọng số bằng nhau.",
+              "- **Recall (macro):** recall trung bình của ba lớp, mỗi lớp có trọng số bằng nhau.",
+              "- **F1 (weighted):** F1 trung bình có trọng số theo số mẫu thật của từng lớp.",
+              "- **Test cân bằng:** tập con của test gốc với số mẫu bằng nhau giữa ba lớp; đọc riêng hai bảng.",
+              "- Điểm từng lớp nằm trong [per_class.csv](per_class.csv). Chênh lệch điểm chưa phải kết luận về ý nghĩa thống kê.", ""]
+    (output_dir / "metrics" / "summary.md").write_text("\n".join(lines), encoding="utf-8")
+
+
 def summarize(output_dir):
     output_dir = Path(output_dir)
     metrics = pd.read_csv(output_dir / "metrics" / "summary.csv")
+    write_readable_summary(output_dir)
     drops = []
     for (model, source, split), group in metrics.groupby(["model", "train_domain", "split"]):
         within = group.loc[group.test_domain == source, "macro_f1"].item()
