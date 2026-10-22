@@ -3,6 +3,7 @@ from typing import Callable
 
 import pandas as pd
 
+from src.checks import LEFTOVER_TITLE
 from src.filters import add_text_columns, apply_row_filters, dedup_with_conflicts, remove_cross_overlap
 from src.io_sources import load_book, load_book_extra, load_foody, load_res1
 
@@ -27,7 +28,8 @@ def key_prefix(keys: pd.Series, n: int = NEAR_DUP_WORDS) -> pd.Series:
 
 def _merge_extra(base: pd.DataFrame, extra: pd.DataFrame, other_keys: set) -> pd.DataFrame:
     """Append extra rows whose text is new to both domains (and not a near-copy of a base row);
-    the base rows are never touched."""
+    the base rows are never touched. Bare Tiki auto-title texts ("cực kỳ hài lòng") carry no review, so they go too."""
+    extra = extra[~extra["text_clean"].str.match(LEFTOVER_TITLE)]
     extra = dedup_with_conflicts(extra)
     extra = extra[~extra["id"].isin(set(base["id"]))]  # same review already in the base source
     extra = extra[~extra["key"].isin(set(base["key"]) | other_keys)]

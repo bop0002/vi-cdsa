@@ -4,7 +4,7 @@ from src.prepare import _merge_extra
 
 
 def frame(ids, keys, label=2):
-    return pd.DataFrame({"id": ids, "key": keys, "label": label})
+    return pd.DataFrame({"id": ids, "key": keys, "text_clean": keys, "label": label})
 
 
 def test_merge_extra_drops_exact_and_near_copies_keeps_base():
@@ -23,3 +23,9 @@ def test_merge_extra_drops_rows_whose_id_is_in_base():
     base = frame(["tiki_1"], ["sách đẹp giao nhanh"])
     out = _merge_extra(base, frame(["tiki_1", "tiki_2"], ["tuyệt vời sách đẹp giao nhanh", "giấy mỏng chữ mờ"]), set())
     assert list(out.id) == ["tiki_1", "tiki_2"]
+
+
+def test_merge_extra_drops_bare_auto_titles():
+    base = frame(["tiki_1"], ["sách đẹp giao nhanh"])
+    out = _merge_extra(base, frame(["tiki_2", "tiki_3"], ["cực kỳ hài lòng", "cực kỳ hài lòng với cuốn này"]), set())
+    assert list(out.id) == ["tiki_1", "tiki_3"]

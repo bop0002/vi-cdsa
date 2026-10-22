@@ -24,12 +24,25 @@ REVIEW_SAMPLE = RELABEL_DIR / "review_sample.csv"
 BATCH_SIZE = 200
 
 
+def _gray_a(a: pd.DataFrame) -> pd.Series:
+    return a["rating"].isin([3, 4])
+
+
+def _gray_b(b: pd.DataFrame) -> pd.Series:
+    src = b["source"] if "source" in b else pd.Series("res1", index=b.index)
+    return ((src == "res1") & (b["label"] == 1)) | ((src == "foody") & b["rating"].map(foody_is_gray))
+
+
 def select_gray(a: pd.DataFrame, b: pd.DataFrame) -> pd.DataFrame:
     """Rows whose original label is unreliable per D3: A rated 3★ or 4★, B labelled Neutral (res1)
     or scored in Foody's ambiguous 3.0–7.5 range."""
-    src = b["source"] if "source" in b else pd.Series("res1", index=b.index)
-    b_gray = ((src == "res1") & (b["label"] == 1)) | ((src == "foody") & b["rating"].map(foody_is_gray))
-    return pd.concat([a[a["rating"].isin([3, 4])], b[b_gray]]).reset_index(drop=True)
+    return pd.concat([a[_gray_a(a)], b[_gray_b(b)]]).reset_index(drop=True)
+
+
+def drop_unannotated_gray(a: pd.DataFrame, b: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Drop gray-zone rows that never got a content label (e.g. extra reviews of books held out at export time)."""
+    return (a[~(_gray_a(a) & a["label_source"].ne("content"))],
+            b[~(_gray_b(b) & b["label_source"].ne("content"))])
 
 
 def batch_ids(batch_dir: Path) -> set:

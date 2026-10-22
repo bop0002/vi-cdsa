@@ -1,7 +1,8 @@
 import numpy as np
 import pandas as pd
 import pytest
-from src.split import add_extra_to_train, balanced_subset, frozen_group_split, group_split, match_train_size
+from src.split import (add_extra_to_train, balanced_subset, frozen_group_split, full_split, group_split,
+                       match_split_counts, match_train_size)
 
 
 def synthetic(n_groups=200, per_group=5, seed=0):
@@ -70,3 +71,26 @@ def test_frozen_group_split_uses_listed_groups(tmp_path):
 
 def test_frozen_group_split_falls_back_without_file(tmp_path):
     assert frozen_group_split(synthetic(), tmp_path / "nope.csv").split.tolist() == group_split(synthetic()).split.tolist()
+
+
+def test_match_split_counts_samples_a_to_b():
+    a = pd.DataFrame({"split": ["train"] * 5 + ["test"] * 9, "label": [0] * 5 + [0, 0, 0, 1, 1, 1, 2, 2, 2]})
+    b = pd.DataFrame({"split": ["test"] * 4, "label": [0, 1, 2, 2]})
+    out = match_split_counts(a, b, ("test",))
+    assert out[out.split == "test"].label.value_counts().sort_index().to_dict() == {0: 1, 1: 1, 2: 2}
+    assert (out.split == "train").sum() == 5
+    with pytest.raises(ValueError):
+        match_split_counts(a, pd.DataFrame({"split": ["test"] * 4, "label": [1] * 4}), ("test",))
+
+
+def test_full_split_equal_domains_ratio_and_no_group_leak():
+    a = synthetic(n_groups=300, seed=1).assign(id=lambda d: "a" + d.id, group_id=lambda d: "a" + d.group_id)
+    b = synthetic(n_groups=250, seed=2).assign(id=lambda d: "b" + d.id, group_id=lambda d: "b" + d.group_id)
+    oa, ob = full_split(a, b)
+    for s in ("train", "val", "test"):
+        assert oa[oa.split == s].label.value_counts().to_dict() == ob[ob.split == s].label.value_counts().to_dict()
+    frac = oa.split.value_counts(normalize=True)
+    assert abs(frac["train"] - 0.8) < 0.01 and abs(frac["val"] - 0.1) < 0.01 and abs(frac["test"] - 0.1) < 0.01
+    for out in (oa, ob):
+        assert out.groupby("group_id").split.nunique().max() == 1
+        assert not out.id.duplicated().any()
