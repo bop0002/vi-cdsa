@@ -42,29 +42,27 @@ cells.append(nbf.v4.new_code_cell("""# 2. Cài đặt các thư viện cần thi
 """))
 
 # Cell 4: Markdown Project Setup
-cells.append(nbf.v4.new_markdown_cell("""### 3. Thiết lập Môi trường và Thư mục Dự án
-Nếu bạn chạy trên Google Colab, hãy clone repository của nhóm hoặc upload thư mục `vi-cdsa` lên Google Drive rồi mount vào Colab.
+cells.append(nbf.v4.new_markdown_cell("""### 3. Tự động Kéo Mã nguồn và Dữ liệu từ GitHub về Google Colab
+Đoạn code dưới đây sẽ tự động clone toàn bộ thư mục dự án (bao gồm toàn bộ mã nguồn `src/` và dữ liệu sạch `.parquet` trong `data/processed/full/`) và chuyển thư mục làm việc vào `vi-cdsa`.
 """))
 
 # Cell 5: Code Mount & Path
 cells.append(nbf.v4.new_code_cell("""import os
 import sys
-from pathlib import Path
 
 # Kiểm tra nếu đang chạy trên Google Colab
-if 'google.colab' in sys.modules:
-    # Trường hợp 1: Clone từ git (nhánh member3-phobert)
-    if not os.path.exists("vi-cdsa"):
-        # Thay đường dẫn git của nhóm bạn vào đây nếu cần:
-        # !git clone -b member3-phobert https://github.com/<your-username>/vi-cdsa.git
-        pass
+if 'google.colab' in sys.modules or os.path.exists('/content'):
+    if not os.path.exists('/content/vi-cdsa'):
+        print("Đang kéo toàn bộ thư mục dự án (mã nguồn + dữ liệu) từ GitHub...")
+        !git clone -b member3-phobert https://github.com/bop0002/vi-cdsa.git /content/vi-cdsa
     
-    # Thiết lập thư mục làm việc
-    if os.path.exists("vi-cdsa"):
-        os.chdir("vi-cdsa")
-    
-sys.path.insert(0, str(Path.cwd()))
-print(f"Current Working Directory: {os.getcwd()}")
+    # Chuyển thư mục làm việc vào vi-cdsa
+    %cd /content/vi-cdsa
+    if '/content/vi-cdsa' not in sys.path:
+        sys.path.insert(0, '/content/vi-cdsa')
+
+print(f"Thư mục làm việc hiện tại: {os.getcwd()}")
+!ls -la
 """))
 
 # Cell 6: Markdown Load Data
@@ -327,6 +325,21 @@ with open("results/metrics/error_analysis.md", "w", encoding="utf-8") as f:
 
 print("=== BẢNG PHÂN TÍCH LỖI MẪU CHO CHƯƠNG 5 BÁO CÁO ===")
 print(md_table)
+"""))
+
+# Cell 18: Download results
+cells.append(nbf.v4.new_markdown_cell("""### 10. Nén và Tải Toàn bộ Kết quả về Máy tính
+Chạy ô bên dưới để tự động đóng gói thư mục `results/` (bao gồm các bảng số liệu CSV, file JSON và biểu đồ Confusion Matrix PNG) thành file ZIP và tải về máy tính của bạn.
+"""))
+
+cells.append(nbf.v4.new_code_cell("""# Nén toàn bộ kết quả thực nghiệm và tự động tải về
+!zip -r /content/results_phobert.zip results/
+try:
+    from google.colab import files
+    files.download('/content/results_phobert.zip')
+    print("✅ Đã khởi chạy tải file results_phobert.zip về máy!")
+except Exception as e:
+    print(f"File zip đã lưu tại: /content/results_phobert.zip (Lỗi Colab files: {e})")
 """))
 
 nb.cells = cells
