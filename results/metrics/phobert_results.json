@@ -1,0 +1,226 @@
+[
+  {
+    "model": "PhoBERT",
+    "loss_type": "cross_entropy",
+    "scenario": "A -> A",
+    "type": "In-domain",
+    "macro_f1": 0.8046976286730363,
+    "accuracy": 0.9050314465408805,
+    "f1_negative": 0.9129113924050632,
+    "f1_neutral": 0.5546468401486989,
+    "f1_positive": 0.9465346534653465,
+    "confusion_matrix": [
+      [
+        1803,
+        111,
+        57
+      ],
+      [
+        77,
+        373,
+        206
+      ],
+      [
+        99,
+        205,
+        5019
+      ]
+    ]
+  },
+  {
+    "model": "PhoBERT",
+    "loss_type": "cross_entropy",
+    "scenario": "A -> B",
+    "type": "Cross-domain",
+    "macro_f1": 0.7868686467273305,
+    "accuracy": 0.9111949685534592,
+    "f1_negative": 0.9150090415913201,
+    "f1_neutral": 0.49530956848030017,
+    "f1_positive": 0.9502873301103713,
+    "confusion_matrix": [
+      [
+        1771,
+        76,
+        124
+      ],
+      [
+        85,
+        264,
+        307
+      ],
+      [
+        44,
+        70,
+        5209
+      ]
+    ]
+  },
+  {
+    "model": "PhoBERT",
+    "loss_type": "focal",
+    "scenario": "A -> A",
+    "type": "In-domain",
+    "macro_f1": 0.8108792367834631,
+    "accuracy": 0.8915723270440251,
+    "f1_negative": 0.9121827411167512,
+    "f1_neutral": 0.584971098265896,
+    "f1_positive": 0.9354838709677419,
+    "confusion_matrix": [
+      [
+        1797,
+        135,
+        39
+      ],
+      [
+        67,
+        506,
+        83
+      ],
+      [
+        105,
+        433,
+        4785
+      ]
+    ]
+  },
+  {
+    "model": "PhoBERT",
+    "loss_type": "focal",
+    "scenario": "A -> B",
+    "type": "Cross-domain",
+    "macro_f1": 0.8210775164849892,
+    "accuracy": 0.9123270440251572,
+    "f1_negative": 0.9126010957474563,
+    "f1_neutral": 0.5968660968660968,
+    "f1_positive": 0.9537653568414143,
+    "confusion_matrix": [
+      [
+        1749,
+        136,
+        86
+      ],
+      [
+        68,
+        419,
+        169
+      ],
+      [
+        45,
+        193,
+        5085
+      ]
+    ]
+  },
+  {
+    "model": "PhoBERT",
+    "loss_type": "cross_entropy",
+    "scenario": "B -> A",
+    "type": "Cross-domain",
+    "macro_f1": 0.7678819356090205,
+    "accuracy": 0.8725786163522012,
+    "f1_negative": 0.8709839357429718,
+    "f1_neutral": 0.5041800643086817,
+    "f1_positive": 0.9284818067754078,
+    "confusion_matrix": [
+      [
+        1735,
+        175,
+        61
+      ],
+      [
+        97,
+        392,
+        167
+      ],
+      [
+        181,
+        332,
+        4810
+      ]
+    ]
+  },
+  {
+    "model": "PhoBERT",
+    "loss_type": "cross_entropy",
+    "scenario": "B -> B",
+    "type": "In-domain",
+    "macro_f1": 0.85362999402648,
+    "accuracy": 0.9323270440251572,
+    "f1_negative": 0.9445015416238438,
+    "f1_neutral": 0.6529108327192336,
+    "f1_positive": 0.9634776077363628,
+    "confusion_matrix": [
+      [
+        1838,
+        101,
+        32
+      ],
+      [
+        48,
+        443,
+        165
+      ],
+      [
+        35,
+        157,
+        5131
+      ]
+    ]
+  },
+  {
+    "model": "PhoBERT",
+    "loss_type": "focal",
+    "scenario": "B -> A",
+    "type": "Cross-domain",
+    "macro_f1": 0.7596376941204528,
+    "accuracy": 0.8501886792452831,
+    "f1_negative": 0.8713713713713713,
+    "f1_neutral": 0.49843260188087773,
+    "f1_positive": 0.9091091091091091,
+    "confusion_matrix": [
+      [
+        1741,
+        186,
+        44
+      ],
+      [
+        97,
+        477,
+        82
+      ],
+      [
+        187,
+        595,
+        4541
+      ]
+    ]
+  },
+  {
+    "model": "PhoBERT",
+    "loss_type": "focal",
+    "scenario": "B -> B",
+    "type": "In-domain",
+    "macro_f1": 0.8588338379313368,
+    "accuracy": 0.9271698113207547,
+    "f1_negative": 0.9430936368339369,
+    "f1_neutral": 0.6733542319749216,
+    "f1_positive": 0.9600536449851519,
+    "confusion_matrix": [
+      [
+        1823,
+        130,
+        18
+      ],
+      [
+        32,
+        537,
+        87
+      ],
+      [
+        40,
+        272,
+        5011
+      ]
+    ]
+  }
+]

@@ -6,3 +6,4 @@ __pycache__/
 data/relabel/chunks/
 data/relabel/results/parts/
 data/relabel/results/*.part
+results/*.zip
