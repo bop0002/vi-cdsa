@@ -41,4 +41,8 @@ def run_checks(frames: dict, min_test: int = 250, min_train: int = 1000) -> list
         errs.append(f"overlap A/B: {len(ka & kb)} texts")
     if len(frames["A_train"]) != len(frames["B_train"]):
         errs.append(f"train size A={len(frames['A_train'])} != B={len(frames['B_train'])}")
+    if "A_train_balanced" in frames:
+        ca, cb = (frames[f"{d}_train_balanced"]["label"].value_counts().sort_index().to_dict() for d in "AB")
+        if ca != cb or len(set(ca.values())) != 1:
+            errs.append(f"train_balanced not equal 1:1:1 in both domains: A={ca} B={cb}")
     return errs

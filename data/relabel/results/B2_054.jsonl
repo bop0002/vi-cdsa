@@ -1,0 +1,200 @@
+{"id": "foody_2360047", "label": 2, "note": "Khen giao nhanh, chè ổn định"}
+{"id": "foody_2360164", "label": 0, "note": "Phàn nàn giao thiếu phần ăn"}
+{"id": "foody_2360222", "label": 2, "note": "Khen nhân viên dễ thương, đồ ăn ổn"}
+{"id": "foody_2360280", "label": 1, "note": "Khen bánh trứng muối nhưng chê bánh trà sữa quá ngọt"}
+{"id": "foody_2360331", "label": 1, "note": "Khen thức ăn khá nhưng phục vụ trung bình"}
+{"id": "foody_2360351", "label": 2, "note": "Khen đồ ăn siêu ngon và lạ miệng"}
+{"id": "foody_2360354", "label": 2, "note": "Khen món mới đỉnh, rất hài lòng"}
+{"id": "foody_2360511", "label": 0, "note": "Chê dịch vụ giao hàng rất tệ, tùy tiện từ chối"}
+{"id": "foody_2360532", "label": 0, "note": "Chê đồ ăn không ngon, tương đen cực tệ"}
+{"id": "foody_2360569", "label": 0, "note": "Chê bánh không ngon, chất lượng kém, không quay lại"}
+{"id": "foody_2360586", "label": 0, "note": "Chê cốt bánh quá mỏng, giá đắt không tương xứng"}
+{"id": "foody_2360642", "label": 0, "note": "Chê chất lượng hải sản quá tệ, bở"}
+{"id": "foody_2360881", "label": 0, "note": "Thất vọng, chê đồ ăn dở, quán dơ, không quay lại"}
+{"id": "foody_2361015", "label": 0, "note": "Chê đồ ăn bình thường, dịch vụ thái độ kém và mất vệ sinh"}
+{"id": "foody_2361343", "label": 2, "note": "Khen bánh rất ngon, chắc chắn mua lại"}
+{"id": "foody_2361412", "label": 2, "note": "Khen giao hàng nhanh, đồ uống hợp khẩu vị"}
+{"id": "foody_2361422", "label": 2, "note": "Khen đóng gói gọn gàng, giao nhanh, gà nóng"}
+{"id": "foody_2361632", "label": 0, "note": "Bức xúc vì thái độ nhân viên khinh thường khách, lẩu dở"}
+{"id": "foody_236172", "label": 2, "note": "(khó) Khen sushi ngon, giá rẻ chấp nhận được, sẽ quay lại"}
+{"id": "foody_2361955", "label": 0, "note": "Phàn nàn giao sai loại trân châu"}
+{"id": "foody_2362129", "label": 0, "note": "Bức xúc vì thái độ nhân viên hách dịch đuổi khách"}
+{"id": "foody_236213", "label": 1, "note": "(spam) Chèn quảng cáo sản phẩm men vi sinh"}
+{"id": "foody_23624", "label": 2, "note": "Khen sinh tố ngon, thực đơn phong phú"}
+{"id": "foody_2362474", "label": 1, "note": "Phục vụ tốt nhưng món ăn chưa ngon, khen chê cân bằng"}
+{"id": "foody_236259", "label": 1, "note": "Khen món ăn ngon nhưng phục vụ chưa tốt, tạm hài lòng"}
+{"id": "foody_2362700", "label": 1, "note": "Khen thịt ngon nhưng không thích cơm, quá ít rau"}
+{"id": "foody_2362706", "label": 2, "note": "(khó) Khen đồ ăn ngon và miến xào, dù không thích không gian"}
+{"id": "foody_2362920", "label": 0, "note": "Chê cơm khô không ăn được, giá quá cao"}
+{"id": "foody_2363078", "label": 0, "note": "Chê đóng gói không chuyên nghiệp và giao thiếu món"}
+{"id": "foody_2363233", "label": 0, "note": "Chê chả dai cháy, nem dở, không ăn lại"}
+{"id": "foody_2363360", "label": 0, "note": "Bực mình vì thái độ phục vụ khó chịu, không quay lại"}
+{"id": "foody_2363468", "label": 0, "note": "Chê chất lượng giảm sút, đồ ăn nguội và dở"}
+{"id": "foody_2363595", "label": 0, "note": "Chê đồ ăn quá dở, nhiều dầu, không ăn lại"}
+{"id": "foody_2363712", "label": 2, "note": "Khen chất lượng món ăn tốt, khách quen nhiều lần"}
+{"id": "foody_2364045", "label": 1, "note": "Khen chè ngon nhưng chê chỗ ngồi chật chội mất vệ sinh"}
+{"id": "foody_2364063", "label": 1, "note": "Khen view đẹp nhưng chê nóng và giá cao"}
+{"id": "foody_2364388", "label": 0, "note": "Chê giá quá đắt, chắc sẽ không ghé quán nữa"}
+{"id": "foody_2364589", "label": 0, "note": "Bực xúc vì nhân viên quát khách, không bao giờ quay lại"}
+{"id": "foody_236495", "label": 0, "note": "Chê thái độ phục vụ rất kém, bánh không còn ngon"}
+{"id": "foody_2365062", "label": 2, "note": "Khen đồ ăn ngon, giá hợp lý, phục vụ dễ thương"}
+{"id": "foody_2365099", "label": 0, "note": "Phàn nàn quán luôn quên dưa leo khi giao hàng"}
+{"id": "foody_2365108", "label": 0, "note": "Bức xúc vì lẩu có kiến, cách xử lý thiếu tôn trọng"}
+{"id": "foody_236513", "label": 0, "note": "Chê đắt, ít, tính tiền không rõ ràng, không quay lại"}
+{"id": "foody_2365407", "label": 2, "note": "Khen đồ ăn ngon hơn nhiều quán, ăn nhiều lần"}
+{"id": "foody_2365684", "label": 2, "note": "Khen bún nhiều đồ ăn, hấp dẫn, mắm đậm đà"}
+{"id": "foody_2365860", "label": 1, "note": "Đính chính sự việc nhận quà của quán, thái độ trung tính"}
+{"id": "foody_2365895", "label": 2, "note": "Khen quán sạch sẽ, nhân viên dễ thương, đồ ăn ngon"}
+{"id": "foody_2365915", "label": 0, "note": "(khó) Khó chịu vì trả thêm tiền sốt nhưng quán quên giao"}
+{"id": "foody_2365918", "label": 1, "note": "Khen xôi giòn nhưng chê gà nhạt ngán, khen chê cân bằng"}
+{"id": "foody_2366073", "label": 0, "note": "Chê mì quá mặn đóng cục, đóng gói méo mó mất an toàn"}
+{"id": "foody_2366080", "label": 0, "note": "Giao nhầm món và từ chối giải quyết cho khách"}
+{"id": "foody_2366140", "label": 0, "note": "(khó) Thất vọng vì đồ ăn không còn ngon như xưa dù vẫn ăn được"}
+{"id": "foody_2366346", "label": 0, "note": "Bức xúc thái độ phục vụ bất cần của nhân viên và người giữ xe"}
+{"id": "foody_2366356", "label": 1, "note": "Khen đồ ăn nhưng cảm nhận chung bình thường, không có gì đặc biệt"}
+{"id": "foody_2366530", "label": 0, "note": "Bức xúc nhân viên tiếp tân thiếu chuyên nghiệp, không tôn trọng khách"}
+{"id": "foody_2366553", "label": 2, "note": "Khen đồ ăn rất ngon, nhân viên dễ thương nhiệt tình"}
+{"id": "foody_2366656", "label": 0, "note": "Chê đồ ăn bình thường nhưng giá quá mắc, không quay lại"}
+{"id": "foody_2366911", "label": 2, "note": "Khen nem rán và phô mai que ngon, phục vụ thân thiện"}
+{"id": "foody_2367188", "label": 0, "note": "Thất vọng vì món ăn dở tệ và phục vụ chậm"}
+{"id": "foody_2367238", "label": 0, "note": "Chê đồ ăn dở, hộp đựng ẹp và giao trễ cả tiếng"}
+{"id": "foody_23673", "label": 1, "note": "Khen món ăn đậm đà nhưng chê không gian ồn ào và ám mùi"}
+{"id": "foody_2367550", "label": 0, "note": "Khen món ăn ổn nhưng chán nản vì nhân viên lơ khách"}
+{"id": "foody_2367943", "label": 1, "note": "Hỏi về phương thức ship và thanh toán, không đánh giá"}
+{"id": "foody_2367957", "label": 2, "note": "Khen đồ ăn ngon, rất thích và sẽ ủng hộ lâu dài"}
+{"id": "foody_2368114", "label": 0, "note": "Chê quán có mùi khó chịu, đồ ăn bình thường, không quay lại"}
+{"id": "foody_2368174", "label": 1, "note": "(khó) Khen nhân viên dễ thương nhưng chê đồ ăn không ngon"}
+{"id": "foody_2368244", "label": 0, "note": "Chê mọi thứ dở tệ, phục vụ chậm, không quay lại"}
+{"id": "foody_2368269", "label": 2, "note": "Rất thích bánh trà sữa, góp ý nhẹ về giá và món khác"}
+{"id": "foody_236836", "label": 0, "note": "(khó) Chê đắt, món chính bình thường dù phục vụ nhanh và món phụ ổn"}
+{"id": "foody_2368597", "label": 0, "note": "Chê mì khô cứng, vịt dai và giá đắt so với chất lượng"}
+{"id": "foody_2368846", "label": 0, "note": "Thất vọng vì đồ ăn và phục vụ xuống cấp, không đáng tiền"}
+{"id": "foody_2368870", "label": 2, "note": "Khen đồ ăn ngon, nhân viên nhiệt tình và không gian đẹp"}
+{"id": "foody_2368894", "label": 2, "note": "Khen đồ ăn ngon đa dạng, giá tốt, phục vụ nhiệt tình"}
+{"id": "foody_2369056", "label": 0, "note": "Bức xúc cách xử lý sự cố tệ hại của quán, không quay lại"}
+{"id": "foody_2369061", "label": 2, "note": "Khen quán rộng đẹp, đồ ăn ổn, nhân viên thân thiện"}
+{"id": "foody_2369308", "label": 2, "note": "Khen bánh ngon giòn vừa miệng, giá ổn, sẽ quay lại"}
+{"id": "foody_2369327", "label": 1, "note": "(khó) Thích đồ ăn nhưng chê chất lượng giảm vào ngày khuyến mãi"}
+{"id": "foody_2369410", "label": 0, "note": "Bức xúc thái độ khinh thường khách hàng của nhân viên"}
+{"id": "foody_2369470", "label": 1, "note": "Khen chảo bò ngon nhưng chê phục vụ lơ là và món khác dở"}
+{"id": "foody_2369568", "label": 0, "note": "Chê quán làm ăn cẩu thả, giao thiếu món và nguyên liệu"}
+{"id": "foody_2369610", "label": 0, "note": "Chê đồ ăn tệ, nêm nếm không ngon, không quay lại"}
+{"id": "foody_2369997", "label": 0, "note": "Bức xúc thái độ bà chủ khó chịu đuổi khách, bỏ về"}
+{"id": "foody_2370033", "label": 2, "note": "(khó) Khen đồ ăn ngon và quán mát mẻ, chê nhẹ đĩa bé"}
+{"id": "foody_2370187", "label": 1, "note": "Khen bún mọc ngon nhưng chê sữa đậu nành"}
+{"id": "foody_2370189", "label": 0, "note": "Gà nướng bị hư phải vứt bỏ, không bao giờ mua nữa"}
+{"id": "foody_2370223", "label": 1, "note": "Mô tả đồ ăn khen chê đan xen, góp ý nhân viên phục vụ kém"}
+{"id": "foody_2370535", "label": 1, "note": "Đánh giá chi tiết khẩu vị món ăn theo cảm nhận cá nhân"}
+{"id": "foody_2370598", "label": 0, "note": "Chê phục vụ chậm, chờ 10 phút không ai ra hỏi"}
+{"id": "foody_2370601", "label": 0, "note": "Bánh dầy chả lụa bị hư không ăn được, không mua nữa"}
+{"id": "foody_2370742", "label": 1, "note": "Khen nước uống ngon nhưng phàn nàn nhân viên order không thân thiện"}
+{"id": "foody_2371143", "label": 0, "note": "Thất vọng lần 2 vì nhân viên lơ là và khu thức ăn dơ"}
+{"id": "foody_2371364", "label": 0, "note": "Chê nước lẩu không ngon, bill quá đắt, không quay lại"}
+{"id": "foody_2371673", "label": 0, "note": "Chê món bò dở tệ và không gian quán bị nóng"}
+{"id": "foody_2371962", "label": 1, "note": "Khen đồ ăn ngon nhưng bức xúc nhân viên phục vụ thái độ kém"}
+{"id": "foody_2372022", "label": 1, "note": "Góp ý nên có thêm kim chi ăn kèm kimbap cho đỡ ngấy"}
+{"id": "foody_237210", "label": 1, "note": "Khen đồ ăn khá ổn nhưng chê thái độ của bảo vệ"}
+{"id": "foody_2372241", "label": 1, "note": "(khó) Khen pizza hải sản và ship nhanh, chê pizza pepperoni khô"}
+{"id": "foody_2372260", "label": 0, "note": "Giao nhầm món và không phản hồi khách, không mua lần sau"}
+{"id": "foody_2372432", "label": 0, "note": "Chê đồ uống cực kỳ tệ, đau bụng, không bao giờ quay lại"}
+{"id": "foody_2372655", "label": 1, "note": "Thấy chất lượng giảm so với trước nhưng vẫn mong sẽ ngon hơn"}
+{"id": "foody_2372890", "label": 0, "note": "bánh ngon nhưng phục vụ chậm, thái độ kiêu"}
+{"id": "foody_2373438", "label": 0, "note": "chê quán chảnh, giá mắc và phục vụ tệ"}
+{"id": "foody_2373777", "label": 0, "note": "chê cơm ít, đắt, khuyên mọi người né quán"}
+{"id": "foody_2373926", "label": 0, "note": "trà nhạt, nắp bục tung tóe, làm ăn chán"}
+{"id": "foody_2373961", "label": 0, "note": "chê nhân viên khó chịu, bực bội với khách"}
+{"id": "foody_2374179", "label": 0, "note": "bún ngon nhưng nem bị mốc trắng phải bỏ"}
+{"id": "foody_2374336", "label": 0, "note": "chê phục vụ tệ, tính tiền sai, quán dơ"}
+{"id": "foody_2374514", "label": 0, "note": "đồ ăn đông đá, nhân viên thái độ khó chịu"}
+{"id": "foody_237463", "label": 0, "note": "chê quán chật, chó cộc, giá nước quá cao"}
+{"id": "foody_2374761", "label": 1, "note": "(khó) súp ngon và bán dễ thương nhưng hơi ít, quán nhỏ"}
+{"id": "foody_2374778", "label": 0, "note": "chê xôi nhão, gà khô cứng, không quay lại"}
+{"id": "foody_2374869", "label": 0, "note": "thái độ chủ quán hống hách, kêu gọi tẩy chay"}
+{"id": "foody_237498", "label": 1, "note": "khen chê đan xen, pizza và phục vụ bình thường"}
+{"id": "foody_237513", "label": 0, "note": "chê phục vụ chậm, thiếu chuyên nghiệp, làm đổ nước"}
+{"id": "foody_2375322", "label": 0, "note": "phàn nàn giao hàng bị thiếu phần chả giò"}
+{"id": "foody_237586", "label": 0, "note": "chê decor xấu, đồ ăn dở, chỉ được giá rẻ"}
+{"id": "foody_2375861", "label": 2, "note": "khen quán ngon, đồ ăn tốt"}
+{"id": "foody_2375898", "label": 0, "note": "chê phá lấu dở và đắt, bánh tráng tạm được"}
+{"id": "foody_2376066", "label": 2, "note": "khen ăn no và ngon quá"}
+{"id": "foody_2376409", "label": 1, "note": "đánh giá ở mức trung bình, đáng thử"}
+{"id": "foody_23768", "label": 1, "note": "chỉ nêu thông tin quán nổi tiếng, không rõ cảm xúc"}
+{"id": "foody_2377147", "label": 1, "note": "khen bánh tráng cuốn ngon nhưng chê bánh tráng Long An cũ"}
+{"id": "foody_237735", "label": 2, "note": "khen đồ ăn khá được, giá rẻ, phục vụ nhanh nhẹn"}
+{"id": "foody_237739", "label": 2, "note": "khen đồ ăn ngon, giá vừa phải, khuyên nên thử"}
+{"id": "foody_2378091", "label": 0, "note": "chờ lâu, đồ ăn dở nguội, hoàn toàn thất vọng"}
+{"id": "foody_2378095", "label": 2, "note": "khen hủ tiếu ngon cực kỳ dù quán cũ giá hơi cao"}
+{"id": "foody_2378097", "label": 1, "note": "khen chê cân bằng, cảm xúc vừa phải, đáng thử"}
+{"id": "foody_2378740", "label": 0, "note": "chê đắt, nhanh ngán, sẽ không quay lại"}
+{"id": "foody_2379305", "label": 0, "note": "chê đồ ăn nguội, đắt so với lượng, sốt đổ ra ngoài"}
+{"id": "foody_2379467", "label": 0, "note": "chê nhân viên phục vụ vô trách nhiệm, quyết không quay lại"}
+{"id": "foody_237961", "label": 0, "note": "chê giá cả quá đắt đỏ"}
+{"id": "foody_2379619", "label": 0, "note": "chê vị bình thường, bột khô cứng, không quay lại"}
+{"id": "foody_2379680", "label": 0, "note": "bức xúc thái độ dằn mặt, trừng mắt của nhân viên"}
+{"id": "foody_237971", "label": 2, "note": "khen nhiều rau, sạch sẽ và mắm hợp khẩu vị"}
+{"id": "foody_2379750", "label": 0, "note": "chê chủ quán bốc tay vào thức ăn, không quay lại"}
+{"id": "foody_2380842", "label": 2, "note": "(khó) hài lòng đồ ăn đáng tiền và quán giữ giúp đồ để quên"}
+{"id": "foody_2380907", "label": 1, "note": "khen kem xôi và giá rẻ nhưng chê các món khác"}
+{"id": "foody_23811", "label": 1, "note": "chất lượng tạm được, giá vừa phải nhưng vệ sinh chưa sạch"}
+{"id": "foody_23815", "label": 1, "note": "đánh giá bánh canh cua ăn tạm được, giá tạm ổn"}
+{"id": "foody_2381540", "label": 0, "note": "thất vọng vì bánh lần này bé đi 1/3"}
+{"id": "foody_2381565", "label": 0, "note": "thích trà nhưng mất điểm nặng vì bảo vệ thô lỗ"}
+{"id": "foody_2382", "label": 1, "note": "chưa ăn thử bao giờ, chỉ kể lại việc đi qua quán"}
+{"id": "foody_2382167", "label": 0, "note": "chê vị nhạt nhẽo, không bao giờ quay lại"}
+{"id": "foody_2382273", "label": 0, "note": "phàn nàn mua mang về hay bị quên cho cà phê"}
+{"id": "foody_2382337", "label": 0, "note": "chê uống nước đau bụng, bị đùn đẩy chỗ, cạch đến mua"}
+{"id": "foody_2382363", "label": 1, "note": "khen chê lẫn lộn giữa hột vịt, nước mía và nước chấm"}
+{"id": "foody_2382532", "label": 1, "note": "đánh giá tạm ổn dù trân châu nhão và quá ngọt"}
+{"id": "foody_238259", "label": 0, "note": "chê không có ổ cắm, nhân viên đuổi tầng, không tiện làm việc"}
+{"id": "foody_2382649", "label": 0, "note": "chê quán chật bẩn, phục vụ kém ngáo ngơ"}
+{"id": "foody_238272", "label": 0, "note": "chê phục vụ kém, đồ ăn không tươi, không ghé lại"}
+{"id": "foody_2383260", "label": 0, "note": "chê thái độ phục vụ rất tệ dù đồ ăn ngon"}
+{"id": "foody_2383349", "label": 2, "note": "khen bún đậu và nước mơ ngon, chê nhẹ phí giữ xe"}
+{"id": "foody_2383459", "label": 0, "note": "chê bánh tằm bì quá dở và đắt"}
+{"id": "foody_2383782", "label": 1, "note": "góp ý bổ sung hình ảnh trên menu, không rõ cảm xúc"}
+{"id": "foody_2384061", "label": 0, "note": "chê bánh tráng dở kinh dị, chất lượng đi xuống"}
+{"id": "foody_2384189", "label": 0, "note": "thất vọng vì mẹt gà toàn ức khô, bở ngán"}
+{"id": "foody_2384265", "label": 0, "note": "thất vọng vì yogurt bị hư dù gà ok"}
+{"id": "foody_238453", "label": 0, "note": "chê phục vụ siêu chậm làm khách bỏ về, không quay lại"}
+{"id": "foody_238514", "label": 0, "note": "(khó) chê thái độ phục vụ không chấp nhận được dù phở ngon"}
+{"id": "foody_2385770", "label": 2, "note": "khen nước lèo vừa miệng, topping nhiều, ngon xuất sắc"}
+{"id": "foody_2385858", "label": 0, "note": "chê phục vụ kém, lên món chậm thiên vị"}
+{"id": "foody_238589", "label": 0, "note": "chê phục vụ cực chậm, món ăn bình thường và dở"}
+{"id": "foody_2386215", "label": 0, "note": "chê nhân viên thái độ xấc xược, bỏ về không ăn"}
+{"id": "foody_238626", "label": 0, "note": "thất vọng toàn tập, hải sản sống tanh, đau bụng"}
+{"id": "foody_238644", "label": 2, "note": "khen đồ ăn rất ngon, quán ruột, chê nhẹ nhân viên"}
+{"id": "foody_2386442", "label": 0, "note": "chê các món đều dở tệ, canh thiu"}
+{"id": "foody_2386707", "label": 0, "note": "chê dịch vụ tệ, bắt khách chờ làm bánh một tiếng"}
+{"id": "foody_2386746", "label": 2, "note": "khen bạch tuộc ngon, sẽ quay lại, nhắc làm nóng hơn"}
+{"id": "foody_2386772", "label": 2, "note": "khen đồ ăn ngon, nhân viên lanh lẹ dù giá hơi cao"}
+{"id": "foody_2387169", "label": 0, "note": "chê quá ít nem so với giá, quá thất vọng"}
+{"id": "foody_2387219", "label": 1, "note": "khen sinh tố ổn nhưng chê trái cây dầm quá ngọt"}
+{"id": "foody_2387237", "label": 1, "note": "đánh giá trung bình, món tạm ổn, khuyên ăn quán khác"}
+{"id": "foody_238725", "label": 0, "note": "chê đồ ăn dở, quán bẩn, phục vụ lâu dù giá rẻ"}
+{"id": "foody_238731", "label": 0, "note": "chê đồ ăn thức uống chán, chỉ hợp chụp ảnh"}
+{"id": "foody_238736", "label": 1, "note": "khen chê đan xen về món ăn và giá cả, view đẹp"}
+{"id": "foody_2387405", "label": 2, "note": "khen sinh tố vừa ăn, sạch sẽ, ngon"}
+{"id": "foody_238747", "label": 2, "note": "khen bánh ngon, giá rẻ, quán đông phục vụ tạm"}
+{"id": "foody_2387757", "label": 0, "note": "chê mì cay dở chưa từng thấy, quá chua"}
+{"id": "foody_2387951", "label": 2, "note": "khen đồ ăn rất ngon, sẽ ủng hộ tiếp"}
+{"id": "foody_2388027", "label": 1, "note": "khen bánh ngon nhưng chê ruốc quá mặn"}
+{"id": "foody_2388060", "label": 0, "note": "chê quán giao thiếu trân châu đã gọi"}
+{"id": "foody_238807", "label": 1, "note": "(khó) tiếc vì tới muộn hết món, cảm xúc trung tính"}
+{"id": "foody_238815", "label": 0, "note": "chê phục vụ tắc trách, không bao giờ quay lại"}
+{"id": "foody_2388448", "label": 0, "note": "chê cháo cũ thiu, mặn, chỉ là quảng cáo"}
+{"id": "foody_2388748", "label": 0, "note": "chê thái độ phục vụ quá tệ, không quay lại dù ngon"}
+{"id": "foody_2388766", "label": 0, "note": "chê mất vệ sinh an toàn thực phẩm gây đau bụng"}
+{"id": "foody_2388823", "label": 1, "note": "(khó) khen đồ ăn ngon nhưng chê nhân viên lớn tiếng"}
+{"id": "foody_2388929", "label": 0, "note": "chê đồ ăn thiu và nhân viên thái độ xem thường khách"}
+{"id": "foody_238893", "label": 2, "note": "khen mì quảng ngon, phục vụ nhanh, khuyên ghé ăn"}
+{"id": "foody_2388935", "label": 0, "note": "chê giao thiếu, thịt khô dai, không bao giờ đặt nữa"}
+{"id": "foody_2388995", "label": 0, "note": "chê thái độ nhân viên khinh khách"}
+{"id": "foody_23890", "label": 2, "note": "khen bánh đúc nong nóng ngon, chê nhẹ quán chật"}
+{"id": "foody_2389049", "label": 1, "note": "khen thịt xiên ngon nhưng chê bánh mì quá khô"}
+{"id": "foody_2389171", "label": 0, "note": "chê gà lạt nhách, quá ít và nước chấm dở"}
+{"id": "foody_2389173", "label": 0, "note": "thất vọng vì buffet ít món, nóng và chán"}
+{"id": "foody_2389454", "label": 0, "note": "chê phục vụ chậm, lộn xộn như cái chợ"}
+{"id": "foody_2389852", "label": 0, "note": "chê mì ý chua dở dù shipper dễ thương"}
+{"id": "foody_2389949", "label": 0, "note": "chê bánh và nước chấm dở, đóng gói đổ tháo"}
+{"id": "foody_2390068", "label": 0, "note": "chê matcha latte dở tệ so với trước, góp ý quán"}
+{"id": "foody_239011", "label": 1, "note": "cảm nhận bình thường, tẻ nhạt, so với giá tạm được"}

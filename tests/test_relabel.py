@@ -3,7 +3,7 @@ import json
 import pandas as pd
 import pytest
 
-from src.relabel import (apply_relabels, export_batches, merge_results, qa_against_audit,
+from src.relabel import (apply_relabels, export_batches, merge_results, next_wave, qa_against_audit,
                          select_gray, validate_results)
 
 
@@ -27,6 +27,20 @@ def test_select_gray_takes_a_3_4_star_and_b_neutral():
     a = pool()[lambda d: d.domain == "A"]
     b = pool()[lambda d: d.domain == "B"]
     assert list(select_gray(a, b).id) == ["tiki_1", "tiki_2", "res1_1"]
+
+
+def test_select_gray_foody_uses_score_range():
+    b = pd.DataFrame({"id": ["foody_1", "foody_2", "foody_3", "foody_4"], "domain": "B", "source": "foody",
+                      "rating": [2.0, 3.0, 7.5, 8.2], "label": [0, 0, 2, 2]})
+    assert list(select_gray(pool()[lambda d: d.domain == "A"].iloc[:0], b).id) == ["foody_2", "foody_3"]
+
+
+def test_next_wave_never_reuses_batch_names(tmp_path):
+    assert next_wave(tmp_path) == ""
+    (tmp_path / "A_000.jsonl").write_text("")
+    assert next_wave(tmp_path) == "2"
+    (tmp_path / "B2_000.jsonl").write_text("")
+    assert next_wave(tmp_path) == "3"
 
 
 def test_export_batches_blind_and_sized(tmp_path):
@@ -70,6 +84,15 @@ def test_apply_relabels_sets_label_and_source():
     assert out.set_index("id").loc["tiki_1", "label"] == 0
     assert out.set_index("id").label_source.to_dict() == {
         "tiki_1": "content", "tiki_2": "rating", "tiki_3": "rating", "res1_1": "content", "res1_2": "dataset"}
+
+
+def test_apply_relabels_drops_spam():
+    df = pool().assign(label_source="rating")
+    rel = pd.DataFrame({"id": ["tiki_1", "tiki_2", "tiki_3"], "new_label": [1, 0, 1],
+                        "note": ["(spam) quảng cáo", "chê sách, spam nhiều", "bình thường"]})
+    out = apply_relabels(df, rel)
+    assert "tiki_1" not in set(out["id"])
+    assert {"tiki_2", "tiki_3"} <= set(out["id"])
 
 
 def test_apply_relabels_rejects_bad_label():

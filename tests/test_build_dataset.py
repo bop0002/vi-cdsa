@@ -31,4 +31,4 @@ def test_load_relabels_reads_id_and_new_label(tmp_path):
     pd.DataFrame({"id": ["tiki_1"], "domain": ["A"], "orig_label": [1], "new_label": [0], "note": ["x"]}) \
         .to_csv(p, index=False, encoding="utf-8-sig")
     df = load_relabels(p)
-    assert df.to_dict("records") == [{"id": "tiki_1", "new_label": 0}]
+    assert df.to_dict("records") == [{"id": "tiki_1", "new_label": 0, "note": "x"}]

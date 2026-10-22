@@ -5,7 +5,7 @@ import pandas as pd
 from src.config import PROCESSED
 
 DOMAINS = ("A", "B")
-SPLITS = ("train", "val", "test", "test_balanced")
+SPLITS = ("train", "train_balanced", "val", "test", "test_balanced")
 
 
 def load_split(domain: str, split: str, processed_dir: Path = PROCESSED) -> pd.DataFrame:

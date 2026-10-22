@@ -17,6 +17,8 @@ def test_load_split_reads_named_file(tmp_path):
 
 def test_load_split_balanced_test(tmp_path):
     _write(tmp_path, "B_test_balanced")
+    _write(tmp_path, "A_train_balanced")
+    assert len(load_split("A", "train_balanced", processed_dir=tmp_path)) == 3
     assert len(load_split("B", "test_balanced", processed_dir=tmp_path)) == 3
 
 

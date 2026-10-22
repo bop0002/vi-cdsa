@@ -14,6 +14,7 @@ from pathlib import Path
 import pandas as pd
 
 from src.config import PROCESSED, ROOT, SEED
+from src.io_sources import foody_is_gray
 
 RELABEL_DIR = ROOT / "data" / "relabel"
 BATCH_DIR = RELABEL_DIR / "batches"
@@ -24,11 +25,26 @@ BATCH_SIZE = 200
 
 
 def select_gray(a: pd.DataFrame, b: pd.DataFrame) -> pd.DataFrame:
-    """Rows whose original label is unreliable per D3: A rated 3★ or 4★, B labelled Neutral."""
-    return pd.concat([a[a["rating"].isin([3, 4])], b[b["label"] == 1]]).reset_index(drop=True)
+    """Rows whose original label is unreliable per D3: A rated 3★ or 4★, B labelled Neutral (res1)
+    or scored in Foody's ambiguous 3.0–7.5 range."""
+    src = b["source"] if "source" in b else pd.Series("res1", index=b.index)
+    b_gray = ((src == "res1") & (b["label"] == 1)) | ((src == "foody") & b["rating"].map(foody_is_gray))
+    return pd.concat([a[a["rating"].isin([3, 4])], b[b_gray]]).reset_index(drop=True)
 
 
-def export_batches(gray: pd.DataFrame, out_dir: Path, batch_size: int = BATCH_SIZE) -> list[Path]:
+def batch_ids(batch_dir: Path) -> set:
+    return {r["id"] for p in Path(batch_dir).glob("*.jsonl") for r in _read_jsonl(p)}
+
+
+def next_wave(batch_dir: Path) -> str:
+    """'' for the first export, then '2', '3', ... so later exports never overwrite annotated batches."""
+    names = {p.name.split("_")[0] for p in Path(batch_dir).glob("*.jsonl")}
+    if not names:
+        return ""
+    return str(next(w for w in range(2, 100) if not any(n.endswith(str(w)) for n in names)))
+
+
+def export_batches(gray: pd.DataFrame, out_dir: Path, batch_size: int = BATCH_SIZE, wave: str = "") -> list[Path]:
     """Write blind JSONL batches ({id, text}); the original label is deliberately not exported."""
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -36,7 +52,7 @@ def export_batches(gray: pd.DataFrame, out_dir: Path, batch_size: int = BATCH_SI
     for domain, g in gray.groupby("domain", sort=True):
         for i, start in enumerate(range(0, len(g), batch_size)):
             chunk = g.iloc[start:start + batch_size]
-            path = out_dir / f"{domain}_{i:03d}.jsonl"
+            path = out_dir / f"{domain}{wave}_{i:03d}.jsonl"
             lines = (json.dumps({"id": r.id, "text": " ".join(str(r.text_raw).split())}, ensure_ascii=False)
                      for r in chunk.itertuples())
             path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -84,10 +100,18 @@ def merge_results(gray: pd.DataFrame, result_dir: Path) -> pd.DataFrame:
     return merged[["id", "domain", "orig_label", "new_label", "note"]]
 
 
+def is_spam(relabels: pd.DataFrame) -> pd.Series:
+    """Ads/spam flagged by the annotator: Neutral with "spam" in the note ("(spam) ..." in wave 2)."""
+    if "note" not in relabels:
+        return pd.Series(False, index=relabels.index)
+    return relabels["new_label"].eq(1) & relabels["note"].fillna("").str.contains("spam", case=False)
+
+
 def apply_relabels(df: pd.DataFrame, relabels: pd.DataFrame) -> pd.DataFrame:
-    """Override `label` with `new_label` by id and mark those rows label_source='content'."""
+    """Override `label` with `new_label` by id and mark those rows label_source='content'; spam rows are dropped."""
     if not relabels["new_label"].isin([0, 1, 2]).all():
         raise ValueError("new_label must be 0, 1 or 2")
+    df = df[~df["id"].isin(set(relabels.loc[is_spam(relabels), "id"]))]
     new = df["id"].map(relabels.set_index("id")["new_label"])
     hit = new.notna()
     out = df.copy()
@@ -111,6 +135,16 @@ def _gray_pool() -> pd.DataFrame:
     return select_gray(a, b)
 
 
+def _heldout_groups() -> set:
+    """Products in A val/test: their extra rows never reach train (split.add_extra_to_train), so skip annotating them."""
+    from src.build_dataset import load_relabels
+    from src.prepare import clean_sources
+    from src.split import frozen_group_split
+    a, _ = clean_sources(load_relabels(), extra=False)
+    a = frozen_group_split(a)
+    return set(a.loc[a["split"] != "train", "group_id"])
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("command", choices=["export", "validate", "merge", "qa"])
@@ -120,8 +154,14 @@ def main(argv=None) -> int:
 
     if args.command == "export":
         gray = _gray_pool()
-        paths = export_batches(gray, BATCH_DIR, args.batch_size)
-        print(f"exported {len(gray)} rows in {len(paths)} batches to {BATCH_DIR}")
+        done = batch_ids(BATCH_DIR) if BATCH_DIR.exists() else set()
+        gray = gray[~gray["id"].isin(done) & ~gray["group_id"].isin(_heldout_groups())]
+        if gray.empty:
+            print("nothing new to export")
+            return 0
+        wave = next_wave(BATCH_DIR) if BATCH_DIR.exists() else ""
+        paths = export_batches(gray, BATCH_DIR, args.batch_size, wave=wave)
+        print(f"exported {len(gray)} new rows in {len(paths)} batches (wave {wave or 1}) to {BATCH_DIR}")
         print(gray.groupby("domain").size().to_dict())
         return 0
     if args.command == "validate":

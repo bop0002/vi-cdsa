@@ -6,11 +6,12 @@ from pathlib import Path
 import pandas as pd
 
 from src.checks import run_checks
-from src.config import OUTPUT_COLUMNS, PROCESSED, SEED
+from src.config import OUTPUT_COLUMNS, PROCESSED, SEED, TRAIN_CLASS_CAP
 from src.prepare import clean_sources
 from src.relabel import RELABEL_FILE
 from src.segment import segment, to_ml
-from src.split import balanced_subset, group_split, match_train_size
+from src.io_sources import EXTRA_SPLIT
+from src.split import add_extra_to_train, balanced_subset, frozen_group_split, match_train_size
 
 
 def dist(df: pd.DataFrame) -> dict:
@@ -37,7 +38,7 @@ def load_relabels(path: Path = RELABEL_FILE) -> pd.DataFrame | None:
     path = Path(path)
     if not path.exists():
         return None
-    return pd.read_csv(path, encoding="utf-8-sig")[["id", "new_label"]]
+    return pd.read_csv(path, encoding="utf-8-sig")[["id", "new_label", "note"]]
 
 
 def main() -> int:
@@ -53,9 +54,11 @@ def main() -> int:
     print(f"relabels: {len(relabels)} rows from {RELABEL_FILE}" if relabels is not None
           else "relabels: none (using original labels)")
     a, b = clean_sources(relabels, step)
-    a = group_split(a)
-    b = b.assign(split=b["orig_split"])
-    a = match_train_size(a, b)
+    a_extra = a["orig_split"].eq(EXTRA_SPLIT)
+    a = add_extra_to_train(frozen_group_split(a[~a_extra]), a[a_extra])
+    b = b.assign(split=b["orig_split"].replace(EXTRA_SPLIT, "train"))
+    step("split", a[a["split"] == "train"], b[b["split"] == "train"])
+    a, b = match_train_size(a, b, cap=TRAIN_CLASS_CAP)
     step("match_train", a, b)
 
     frames = {}
@@ -65,6 +68,7 @@ def main() -> int:
         df["text_ml"] = df["text_dl"].map(to_ml)
         for s in ("train", "val", "test"):
             frames[f"{d}_{s}"] = df[df["split"] == s].reset_index(drop=True)
+        frames[f"{d}_train_balanced"] = balanced_subset(frames[f"{d}_train"])
         frames[f"{d}_test_balanced"] = balanced_subset(frames[f"{d}_test"])
 
     errors = run_checks(frames)

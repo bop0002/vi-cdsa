@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import pytest
-from src.split import balanced_subset, group_split, match_train_size
+from src.split import add_extra_to_train, balanced_subset, frozen_group_split, group_split, match_train_size
 
 
 def synthetic(n_groups=200, per_group=5, seed=0):
@@ -27,24 +27,46 @@ def test_group_split_deterministic():
     assert group_split(synthetic()).split.tolist() == group_split(synthetic()).split.tolist()
 
 
-def test_match_train_size_copies_b_class_counts_and_only_touches_train():
+def test_match_train_size_takes_min_per_class_and_only_touches_train():
     a = group_split(synthetic())
-    b = pd.DataFrame({"split": ["train"] * 300 + ["val"] * 50 + ["test"] * 50,
-                      "label": [0] * 60 + [1] * 30 + [2] * 210 + [2] * 100})
-    out = match_train_size(a, b)
-    assert out[out.split == "train"].label.value_counts().to_dict() == {0: 60, 1: 30, 2: 210}
-    for s in ["val", "test"]:
-        assert (out.split == s).sum() == (a.split == s).sum()
+    have_a = a[a.split == "train"].label.value_counts()
+    b = pd.DataFrame({"split": ["train"] * 2000 + ["val"] * 50,
+                      "label": [0] * 60 + [1] * 1000 + [2] * 940 + [2] * 50, "orig_split": None})
+    oa, ob = match_train_size(a, b)
+    want = {0: 60, 1: int(have_a[1]), 2: int(have_a[2])}
+    for out in (oa, ob):
+        assert out[out.split == "train"].label.value_counts().sort_index().to_dict() == want
+    assert (oa.split == "val").sum() == (a.split == "val").sum() and (ob.split == "val").sum() == 50
 
 
-def test_match_train_size_fails_when_a_class_is_short():
-    a = group_split(synthetic())
-    b = pd.DataFrame({"split": ["train"] * 500, "label": [1] * 500})
-    with pytest.raises(ValueError, match="lacks rows"):
-        match_train_size(a, b)
+def test_match_train_size_cap_and_original_rows_first():
+    b = pd.DataFrame({"split": "train", "label": 2, "id": range(10),
+                      "orig_split": ["train"] * 4 + ["train_extra"] * 6})
+    a = b.assign(orig_split=None)
+    _, ob = match_train_size(a, b, cap={2: 5})
+    assert len(ob) == 5 and (ob.orig_split == "train").sum() == 4
+
+
+def test_add_extra_to_train_drops_held_out_groups():
+    base = pd.DataFrame({"group_id": ["g1", "g2", "g3"], "split": ["train", "val", "test"]})
+    extra = pd.DataFrame({"group_id": ["g1", "g2", "g3", "g4"]})
+    out = add_extra_to_train(base, extra)
+    assert out[len(base):].group_id.tolist() == ["g1", "g4"]
+    assert (out[len(base):].split == "train").all()
 
 
 def test_balanced_subset_equal_classes():
     t = pd.DataFrame({"id": range(100), "label": [0] * 10 + [1] * 20 + [2] * 70})
     out = balanced_subset(t)
     assert out.label.value_counts().tolist() == [10, 10, 10]
+
+
+def test_frozen_group_split_uses_listed_groups(tmp_path):
+    p = tmp_path / "held.csv"
+    pd.DataFrame({"group_id": ["g1", "g2"], "split": ["val", "test"]}).to_csv(p, index=False)
+    df = pd.DataFrame({"group_id": ["g1", "g2", "g3", "g1"], "label": [0, 1, 2, 2]})
+    assert frozen_group_split(df, p)["split"].tolist() == ["val", "test", "train", "val"]
+
+
+def test_frozen_group_split_falls_back_without_file(tmp_path):
+    assert frozen_group_split(synthetic(), tmp_path / "nope.csv").split.tolist() == group_split(synthetic()).split.tolist()
