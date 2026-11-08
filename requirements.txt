@@ -4,3 +4,13 @@ scikit-learn
 emoji
 py_vncorenlp
 pytest
+
+# Deep Learning & Transformers (Member 3 - PhoBERT)
+torch
+transformers
+accelerate
+
+# Visualization & Metrics
+matplotlib
+seaborn
+
