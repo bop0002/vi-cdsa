@@ -1,0 +1,7 @@
+﻿domain,class,mean,median,min,max
+A,Negative,38.9,28.0,3,776
+A,Neutral,39.1,28.0,3,693
+A,Positive,35.4,22.0,3,1220
+B,Negative,87.8,65.0,3,1159
+B,Neutral,73.3,59.0,3,735
+B,Positive,55.3,38.0,3,769

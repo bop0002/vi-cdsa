@@ -1,0 +1,22 @@
+﻿A_unigram,A_unigram,A_bigram,A_bigram,B_unigram,B_unigram,B_bigram,B_bigram
+term,count,term,count,term,count,term,count
+sách,73991,giao hàng,14361,ăn,76520,món ăn,6033
+không,32794,cuốn sách,9760,không,75266,ăn ngon,4781
+đọc,26910,hàng nhanh,8796,quán,53529,mọi người,4007
+giao,22844,sách đẹp,6514,ngon,51850,đồ_ăn ngon,3935
+hàng,22115,sách hay,5805,món,27868,không ngon,3265
+hay,17603,quyển sách,4020,đây,27116,ăn không,3023
+cuốn,17377,tiki giao,3819,nhân_viên,22407,không phải,2981
+nhanh,16069,mọi người,3422,lần,19959,nhân_viên phục_vụ,2976
+đẹp,15908,sách không,3247,khá,19292,không biết,2933
+tiki,14890,giao nhanh,3221,người,16852,đồ uống,2923
+mua,14311,chưa đọc,2927,đồ_ăn,16373,trà sữa,2895
+nội_dung,13983,đóng_gói cẩn_thận,2867,phục_vụ,15643,ăn_ở đây,2740
+người,12999,sách mới,2821,gọi,15171,ăn thử,2725
+mới,9930,nội_dung sách,2259,giá,13706,khá ngon,2545
+đóng_gói,8895,dễ hiểu,2183,thịt,13565,đây ăn,2508
+quyển,8115,nhanh sách,2147,phải,13428,chứ không,2356
+chưa,7829,mua sách,2054,vị,13122,lần đầu,2171
+bìa,7797,người đọc,1803,nước,13061,quán ăn,2150
+tốt,7597,bìa sách,1711,khách,12273,không gì,2108
+khá,7272,nhanh đóng_gói,1646,nữa,12097,chủ quán,2076

@@ -1,0 +1,6 @@
+﻿chỉ số,A,B
+Vocab train (min_df=1),22595.0,28239.0
+Vocab train (min_df=5),7492.0,9595.0
+Jaccard vocab A∩B / A∪B (min_df=5) %,38.8,
+"OOV % token test, in-domain (X→X)",0.71,0.44
+"OOV % token test, cross-domain (nguồn khác → X)",3.5,3.59

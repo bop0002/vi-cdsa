@@ -1,0 +1,17 @@
+﻿step,domain,n,negative %,neutral %,positive %,ghi chú
+load,A,76536,6.6,5.1,88.3,"Nguồn gốc: Tiki book CSV (A), res1 (B)"
+load,B,32713,19.0,20.4,60.6,"Nguồn gốc: Tiki book CSV (A), res1 (B)"
+relabel+row_filters,A,70799,13.3,5.5,81.1,Gán lại nhãn vùng xám theo nội dung + lọc review < 3 từ / rỗng
+relabel+row_filters,B,32508,20.9,8.6,70.4,Gán lại nhãn vùng xám theo nội dung + lọc review < 3 từ / rỗng
+dedup,A,64750,14.1,5.8,80.1,Bỏ trùng lặp trong từng miền
+dedup,B,31763,21.1,8.4,70.5,Bỏ trùng lặp trong từng miền
+cross_overlap,A,64744,14.1,5.8,80.0,Bỏ câu xuất hiện ở cả A và B
+cross_overlap,B,31757,21.1,8.4,70.5,Bỏ câu xuất hiện ở cả A và B
+extra_loaded,A,41395,32.8,13.5,53.7,"Dữ liệu crawl: Tiki (chỉ 1–4★), Foody"
+extra_loaded,B,56476,24.8,11.5,63.7,"Dữ liệu crawl: Tiki (chỉ 1–4★), Foody"
+with_extra,A,95340,21.1,8.6,70.3,Gộp dữ liệu crawl (đã bỏ trùng với nguồn gốc)
+with_extra,B,81543,25.3,8.2,66.5,Gộp dữ liệu crawl (đã bỏ trùng với nguồn gốc)
+pool,A,64744,14.1,5.8,80.0,A bỏ bản crawl Tiki (lệch tỉ lệ); bỏ vùng xám chưa gán nhãn
+pool,B,81543,25.3,8.2,66.5,A bỏ bản crawl Tiki (lệch tỉ lệ); bỏ vùng xám chưa gán nhãn
+final,A,63936,14.1,5.8,80.1,Sau khi chia 80/10/10 theo sản phẩm/nhà hàng và lấy mẫu cho A = B
+final,B,63936,25.3,8.2,66.5,Sau khi chia 80/10/10 theo sản phẩm/nhà hàng và lấy mẫu cho A = B
