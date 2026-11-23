@@ -60,15 +60,10 @@ def test_detects_dominant_group_id():
     assert any("A: group_id share > 2%" in e for e in errs)
 
 
-def test_no_equal_splits_still_requires_same_train_size():
-    f = valid_frames()
-    f["B_train"] = make("Btr", 30)
-    assert any("train size" in e for e in run_checks(f, min_test=2, min_train=5, equal_splits=()))
-
-
-def test_equal_splits_detects_class_count_mismatch():
+def test_detects_val_test_size_mismatch_but_allows_different_class_ratio():
     f = valid_frames()
     f["B_test"] = make("Bte", 3)
-    assert run_checks(f, min_test=2, min_train=5) == []
-    assert any("test class counts differ" in e for e in run_checks(f, min_test=2, min_train=5,
-                                                                   equal_splits=("train", "test")))
+    assert any("test size" in e for e in run_checks(f, min_test=2, min_train=5))
+    f["B_test"] = make("Bte", 2).assign(label=[0] * 4 + [2] * 2)  # same size as A_test, different ratio
+    f["B_test_balanced"] = f["B_test"]
+    assert run_checks(f, min_test=0, min_train=5) == []
