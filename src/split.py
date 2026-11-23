@@ -94,19 +94,21 @@ def _folds(df: pd.DataFrame, n_folds: int, seed: int) -> pd.DataFrame:
 
 
 def full_split(a: pd.DataFrame, b: pd.DataFrame, shares=None, n_folds: int = 10,
-               seed: int = SEED) -> tuple[pd.DataFrame, pd.DataFrame]:
+               seed: int = SEED, match: bool = True) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Re-split both domains from scratch so every split has the same size and class counts in A and B.
 
     Each domain is cut into group-stratified folds (one fold = test, one = val, the rest = train), then every
     split is sampled to shares[split] * T rows with the class prior of min(A, B) per class. The fold pair and T
     are chosen to make T as large as possible; rows left over in the chosen folds are dropped (moving them
-    would leak a product/restaurant across splits)."""
+    would leak a product/restaurant across splits).
+    match=False: each domain keeps its own class prior (natural ratio); both still get the same T, so every split
+    has the same size in A and B (the larger domain is sampled down)."""
     shares = shares or {"train": 0.8, "val": 0.1, "test": 0.1}
     pool = pd.concat([a["label"].value_counts(), b["label"].value_counts()], axis=1).min(axis=1)
-    prior = pool / pool.sum()
+    priors = [pool / pool.sum()] * 2 if match else [d["label"].value_counts() / len(d) for d in (a, b)]
     fa, fb = _folds(a, n_folds, seed), _folds(b, n_folds, seed)
 
-    def best_pair(f: pd.DataFrame) -> tuple[float, int, int]:
+    def best_pair(f: pd.DataFrame, prior: pd.Series) -> tuple[float, int, int]:
         c = pd.crosstab(f["fold"], f["label"]).reindex(columns=prior.index, fill_value=0)
         best = (-1.0, 0, 1)
         for te in c.index:
@@ -118,12 +120,17 @@ def full_split(a: pd.DataFrame, b: pd.DataFrame, shares=None, n_folds: int = 10,
                 best = max(best, (t, int(te), int(va)))
         return best
 
-    (ta, te_a, va_a), (tb, te_b, va_b) = best_pair(fa), best_pair(fb)
+    (ta, te_a, va_a), (tb, te_b, va_b) = best_pair(fa, priors[0]), best_pair(fb, priors[1])
     total = min(ta, tb)
-    counts = {s: {int(k): int(prior[k] * shares[s] * total) for k in prior.index} for s in shares}
+    counts = [{s: {int(k): int(p[k] * shares[s] * total) for k in p.index} for s in shares} for p in priors]
+    if not match:  # priors differ, so per-class flooring can leave sizes off by a row or two: trim the majority class
+        for s in shares:
+            n = min(sum(c[s].values()) for c in counts)
+            for c, p in zip(counts, priors):
+                c[s][int(p.idxmax())] -= sum(c[s].values()) - n
     out = []
-    for f, te, va in ((fa, te_a, va_a), (fb, te_b, va_b)):
+    for f, te, va, cnt in ((fa, te_a, va_a, counts[0]), (fb, te_b, va_b, counts[1])):
         f = f.assign(split=np.where(f["fold"] == te, "test", np.where(f["fold"] == va, "val", "train")))
-        out.append(pd.concat([_sample_counts(f[f["split"] == s], counts[s], seed) for s in shares])
+        out.append(pd.concat([_sample_counts(f[f["split"] == s], cnt[s], seed) for s in shares])
                    .drop(columns="fold").reset_index(drop=True))
     return out[0], out[1]

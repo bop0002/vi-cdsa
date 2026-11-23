@@ -6,7 +6,7 @@ from src.config import PROCESSED
 
 DOMAINS = ("A", "B")
 SPLITS = ("train", "train_balanced", "val", "test", "test_balanced")
-VARIANTS = ("full", "original", "extra")
+VARIANTS = ("full", "original", "extra", "natural")
 
 
 def load_split(domain: str, split: str, variant: str = "full", processed_dir: Path = PROCESSED) -> pd.DataFrame:

@@ -8,6 +8,9 @@
 - original: original sources only (Tiki CSV, res1 with its own split); A val/test sampled to B's
             class counts, so both domains are 80/10/10 with identical counts.
 - extra:    original val/test (A larger than B) + crawled data in train only, train Neg:Neu:Pos = 2:1:2.
+- natural:  each domain keeps its own class ratio, re-split 80/10/10 by product/restaurant; the larger domain is
+            sampled down so A and B have the same size in every split. A = original Tiki only (the Tiki crawl kept
+            only 1–4★), B = res1 + Foody.
 """
 import argparse
 import json
@@ -25,9 +28,10 @@ from src.io_sources import EXTRA_SPLIT
 from src.split import (add_extra_to_train, balanced_subset, frozen_group_split, full_split, match_split_counts,
                        match_train_size)
 
-VARIANTS = ("full", "original", "extra")
+VARIANTS = ("full", "original", "extra", "natural")
 # splits whose class counts must be identical in A and B
-EQUAL_SPLITS = {"full": ("train", "val", "test"), "original": ("train", "val", "test"), "extra": ("train",)}
+EQUAL_SPLITS = {"full": ("train", "val", "test"), "original": ("train", "val", "test"), "extra": ("train",),
+                "natural": ()}
 
 
 def dist(df: pd.DataFrame) -> dict:
@@ -64,6 +68,11 @@ def split_variant(variant: str, relabels, step) -> tuple[pd.DataFrame, pd.DataFr
         a, b = match_train_size(a, b)
         return match_split_counts(a, b, ("val", "test")), b
     a, b = clean_sources(relabels, step)
+    if variant == "natural":
+        # the Tiki crawl downloaded only 1–4★ (would skew A's ratio); the Foody crawl was unfiltered, so it stays
+        a, b = drop_unannotated_gray(a[a["orig_split"].ne(EXTRA_SPLIT)], b)
+        step("natural_pool", a, b)
+        return full_split(a, b, match=False)
     if variant == "full":
         a, b = drop_unannotated_gray(a, b)
         step("drop_unannotated", a, b)

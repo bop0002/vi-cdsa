@@ -94,3 +94,19 @@ def test_full_split_equal_domains_ratio_and_no_group_leak():
     for out in (oa, ob):
         assert out.groupby("group_id").split.nunique().max() == 1
         assert not out.id.duplicated().any()
+
+
+def test_full_split_unmatched_keeps_each_domain_prior_and_exact_shares():
+    a = synthetic(n_groups=300, seed=1).assign(id=lambda d: "a" + d.id, group_id=lambda d: "a" + d.group_id)
+    b = synthetic(n_groups=250, seed=2).assign(id=lambda d: "b" + d.id, group_id=lambda d: "b" + d.group_id)
+    b = b.assign(label=lambda d: d.label.where(d.index % 4 != 0, 0))  # B gets a different class prior
+    oa, ob = full_split(a, b, match=False)
+    assert oa.split.value_counts().to_dict() == ob.split.value_counts().to_dict()  # same size in every split
+    for src, out in zip((a, b), (oa, ob)):
+        frac = out.split.value_counts(normalize=True)
+        assert abs(frac["train"] - 0.8) < 0.01 and abs(frac["val"] - 0.1) < 0.01 and abs(frac["test"] - 0.1) < 0.01
+        prior = src.label.value_counts(normalize=True)
+        for s in ("train", "val", "test"):
+            got = out[out.split == s].label.value_counts(normalize=True)
+            assert (got - prior).abs().max() < 0.02
+        assert out.groupby("group_id").split.nunique().max() == 1

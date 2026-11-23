@@ -297,6 +297,6 @@
       }
     }
   },
-  "relabel_file": "C:\\DataScrap\\review\\sentiment-cross-domain\\data\\relabel\\relabel_labels.csv",
+  "relabel_file": "C:\\BaiTap\\ML\\vi-cdsa\\data\\relabel\\relabel_labels.csv",
   "errors": []
 }

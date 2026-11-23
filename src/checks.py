@@ -40,6 +40,7 @@ def run_checks(frames: dict, min_test: int = 250, min_train: int = 1000, equal_s
     kb = set().union(*(frames[f"B_{s}"]["key"] for s in SPLITS))
     if ka & kb:
         errs.append(f"overlap A/B: {len(ka & kb)} texts")
+    same_train = "train" in equal_splits  # the natural variant keeps each domain's own class ratio
     if len(frames["A_train"]) != len(frames["B_train"]):
         errs.append(f"train size A={len(frames['A_train'])} != B={len(frames['B_train'])}")
     for s in equal_splits:
@@ -48,6 +49,6 @@ def run_checks(frames: dict, min_test: int = 250, min_train: int = 1000, equal_s
             errs.append(f"{s} class counts differ: A={ca} B={cb}")
     if "A_train_balanced" in frames:
         ca, cb = (frames[f"{d}_train_balanced"]["label"].value_counts().sort_index().to_dict() for d in "AB")
-        if ca != cb or len(set(ca.values())) != 1:
+        if (same_train and ca != cb) or len(set(ca.values())) != 1 or len(set(cb.values())) != 1:
             errs.append(f"train_balanced not equal 1:1:1 in both domains: A={ca} B={cb}")
     return errs
