@@ -165,3 +165,4 @@ Các ca dự đoán sai trong thực tế được tự động trích xuất v�
 6. **Rating và Nội dung mâu thuẫn:** Nhãn gốc bị sai lệch do người dùng bấm nhầm số sao.
 7. **Review quá ngắn & Teencode:** Các câu 2–3 từ thiếu thông tin ngữ cảnh.
 8. **Domain Shift tổng quát:** Khác biệt phong cách diễn đạt cảm xúc giữa hai miền.
+

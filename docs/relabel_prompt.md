@@ -26,3 +26,4 @@ JSON Lines, mỗi dòng: {"id": "...", "text": "..."}
 Chỉ trả về JSON Lines, KHÔNG thêm chữ nào khác, KHÔNG bọc trong ```.
 Mỗi review đầu vào đúng MỘT dòng, giữ nguyên thứ tự và giữ nguyên "id":
 {"id": "<id>", "label": <0|1|2>, "note": "<lý do ngắn bằng tiếng Việt, tối đa 20 từ>"}
+
