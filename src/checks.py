@@ -12,8 +12,8 @@ def _min_class(df: pd.DataFrame) -> int:
     return int(df["label"].value_counts().reindex([0, 1, 2], fill_value=0).min())
 
 
-def run_checks(frames: dict, min_test: int = 250, min_train: int = 1000, equal_splits=("train",)) -> list[str]:
-    """equal_splits: splits whose class counts must be identical in A and B."""
+def run_checks(frames: dict, min_test: int = 250, min_train: int = 1000) -> list[str]:
+    """A and B must have the same size in every split; each keeps its own class ratio."""
     errs = []
     for name, df in frames.items():
         if (df["n_words"] < MIN_WORDS).any():
@@ -40,14 +40,11 @@ def run_checks(frames: dict, min_test: int = 250, min_train: int = 1000, equal_s
     kb = set().union(*(frames[f"B_{s}"]["key"] for s in SPLITS))
     if ka & kb:
         errs.append(f"overlap A/B: {len(ka & kb)} texts")
-    if len(frames["A_train"]) != len(frames["B_train"]):
-        errs.append(f"train size A={len(frames['A_train'])} != B={len(frames['B_train'])}")
-    for s in equal_splits:
-        ca, cb = (frames[f"{d}_{s}"]["label"].value_counts().sort_index().to_dict() for d in "AB")
-        if ca != cb:
-            errs.append(f"{s} class counts differ: A={ca} B={cb}")
+    for s in SPLITS:
+        if len(frames[f"A_{s}"]) != len(frames[f"B_{s}"]):
+            errs.append(f"{s} size A={len(frames[f'A_{s}'])} != B={len(frames[f'B_{s}'])}")
     if "A_train_balanced" in frames:
         ca, cb = (frames[f"{d}_train_balanced"]["label"].value_counts().sort_index().to_dict() for d in "AB")
-        if ca != cb or len(set(ca.values())) != 1:
+        if len(set(ca.values())) != 1 or len(set(cb.values())) != 1:
             errs.append(f"train_balanced not equal 1:1:1 in both domains: A={ca} B={cb}")
     return errs

@@ -149,7 +149,7 @@ def _gray_pool() -> pd.DataFrame:
 
 
 def _heldout_groups() -> set:
-    """Products in A val/test: their extra rows never reach train (split.add_extra_to_train), so skip annotating them."""
+    """Products in A val/test: their extra rows never reached train in the old builds, so wave 2 skipped annotating them."""
     from src.build_dataset import load_relabels
     from src.prepare import clean_sources
     from src.split import frozen_group_split

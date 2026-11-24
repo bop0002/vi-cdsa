@@ -1,0 +1,7 @@
+﻿domain,split,Negative,Neutral,Positive
+A,test,14.1,5.8,80.1
+A,train,14.1,5.8,80.0
+A,val,14.1,5.8,80.1
+B,test,25.3,8.2,66.5
+B,train,25.3,8.2,66.5
+B,val,25.3,8.2,66.5
