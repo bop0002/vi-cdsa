@@ -67,7 +67,7 @@ print(f"Thư mục làm việc hiện tại: {os.getcwd()}")
 """))
 
 # Cell 6: Markdown Load Data
-cells.append(nbf.v4.new_markdown_cell("""### 4. Nạp Dữ Liệu Tự Nhiên (Natural Distribution - Variant `full`)
+cells.append(nbf.v4.new_markdown_cell("""### 4. Nạp Dữ Liệu Tự Nhiên (Natural Distribution)
 Tập dữ liệu đã được tiền xử lý và tách từ tiếng Việt chuẩn cho PhoBERT (`text_dl`).
 """))
 
@@ -77,12 +77,12 @@ from src.dataset import load_split
 
 # Nạp 6 tập dữ liệu tự nhiên
 splits = {
-    "A_train": load_split("A", "train", variant="full"),
-    "A_val": load_split("A", "val", variant="full"),
-    "A_test": load_split("A", "test", variant="full"),
-    "B_train": load_split("B", "train", variant="full"),
-    "B_val": load_split("B", "val", variant="full"),
-    "B_test": load_split("B", "test", variant="full"),
+    "A_train": load_split("A", "train"),
+    "A_val": load_split("A", "val"),
+    "A_test": load_split("A", "test"),
+    "B_train": load_split("B", "train"),
+    "B_val": load_split("B", "val"),
+    "B_test": load_split("B", "test"),
 }
 
 print("=== Thống kê quy mô tập dữ liệu ===")

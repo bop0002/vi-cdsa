@@ -80,12 +80,12 @@ def run_experiment(
     collator = DynamicPaddingCollator(tokenizer=tokenizer, max_length=max_length)
 
     # 1. Load natural splits
-    print("\n--- Loading processed Natural Splits (Variant: full) ---")
+    print("\n--- Loading processed Natural Splits ---")
     splits: dict[str, pd.DataFrame] = {}
     for d in ["A", "B"]:
         for s in ["train", "val", "test"]:
             key = f"{d}_{s}"
-            df = load_split(domain=d, split=s, variant="full")
+            df = load_split(domain=d, split=s)
             if sample_limit and len(df) > sample_limit:
                 df = df.sample(n=sample_limit, random_state=42).reset_index(drop=True)
             splits[key] = df
